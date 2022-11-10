@@ -61,7 +61,7 @@ export default function NavigationMenuComponent() {
         }}
       />
       <Tab.Screen
-        name="AuthScreen"
+        name="Auth"
         component={ProfileScreens}
         options={{
           tabBarIcon: ({ focused }) => {
@@ -78,7 +78,7 @@ export default function NavigationMenuComponent() {
 const ProfileScreens = () => {
   return (
     <Stack.Navigator
-      initialRouteName="AuthScreen"
+      initialRouteName='AuthScreen'
       screenOptions={({ route }) => ({
         tabBarShowLabel: false,
       })}>
@@ -96,7 +96,7 @@ const ProfileScreens = () => {
 const StartAndBookFunk = () => {
   return (
     <Stack.Navigator
-      initialRouteName="StartAndBook"
+      initialRouteName='StartAndBook'
       screenOptions={({ route }) => ({
         tabBarShowLabel: false,
       })}>

@@ -26,7 +26,7 @@ export default function App() {
           barStyle="dark-content"
         />
         <Stack.Navigator
-          initialRouteName="StartAndBook"
+         // initialRouteName="StartAndBook"
           screenOptions={({ route }) => ({
             tabBarShowLabel: false,
             headerShown: false
