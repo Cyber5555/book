@@ -10,6 +10,11 @@ import {
 } from '../../assets/NavIcons/NavIcons';
 import StartAndBookComponents from '../StartAndBook/StartAndBooks';
 import AllBooksComponent from '../AllBooks/AllBook';
+import FeedBack from '../Auth/FeedBack';
+import AboutTheApplication from '../Auth/AboutTheApplication';
+import Login from '../Auth/SignIn/Login';
+import ForgetPassword from '../Auth/SignIn/ForgetPassword';
+import ForgetPasswordCode from '../Auth/SignIn/ForgetPasswordCode';
 
 
 
@@ -23,18 +28,18 @@ export default function NavigationMenuComponent() {
       screenOptions={{
         tabBarShowLabel: false,
         headerShown: false,
-        tabBarHideOnKeyboard: true,
+        // tabBarHideOnKeyboard: true,
         tabBarStyle: {
           position: 'absolute',
           bottom: 25,
-          left: '15%',
+          left: '20%',
           alignItems: 'center',
-          justifyContent: 'center',
+          justifyContent: 'space-between',
           elevation: 0,
           backgroundColor: '#EDEAE4',
           borderTopWidth: 0,
-          height: 70.,
-          width: '70%',
+          height: 70,
+          width: '60%',
           borderRadius: 50,
         },
       }}>
@@ -85,6 +90,41 @@ const ProfileScreens = () => {
       <Stack.Screen
         name="AuthScreen"
         component={AuthScreenComponent}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FeedBack"
+        component={FeedBack}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="AboutTheApplication"
+        component={AboutTheApplication}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{
+          headerShown: false,
+        }}
+      />
+       <Stack.Screen
+        name="ForgetPassword"
+        component={ForgetPassword}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ForgetPasswordCode"
+        component={ForgetPasswordCode}
         options={{
           headerShown: false,
         }}

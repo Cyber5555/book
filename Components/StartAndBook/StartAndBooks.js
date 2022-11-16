@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#FAFAF0',
     paddingHorizontal: 26,
   },
   readerBook: {
@@ -120,9 +120,9 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
   line: {
-    borderWidth: 1,
-    borderColor: '#fff',
+    backgroundColor: '#fff',
     width: '80%',
+    height: 1,
     alignSelf: 'center',
     marginTop: 7
   },

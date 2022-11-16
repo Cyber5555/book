@@ -22,7 +22,7 @@ export default function App() {
           hidden={false}
           translucent={false}
           animated={true}
-          backgroundColor={'transparent'}
+          backgroundColor={'#FAFAF0'}
           barStyle="dark-content"
         />
         <Stack.Navigator
