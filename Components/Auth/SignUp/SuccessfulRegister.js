@@ -4,7 +4,7 @@ import GoBack from "../../../assets/NavIcons/GoBack"
 import MainButton from "../../../assets/NavIcons/MainButton"
 
 
-export default function ForgetPassword({ navigation }) {
+export default function SuccessfulRegister({ navigation }) {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -13,30 +13,27 @@ export default function ForgetPassword({ navigation }) {
           <TouchableOpacity
             style={styles.GoBack}
             onPress={() => {
-              navigation.navigate('Login')
+              navigation.navigate('ConfirmRegister')
             }}>
             <GoBack />
           </TouchableOpacity>
 
-          <Text style={styles.title}>Восстановление</Text>
+          <Text style={styles.title}>Регистрация</Text>
         </View>
 
-        <Text style={styles.infoPage}>Мы отправим 4-х значный код на вашу{'\n'} эл.почту для подтверждения личности</Text>
 
-        <TextInput
-          style={styles.emailInput}
-          placeholder="эл.почта"
-          keyboardType="email-address"
-        />
+        <Text style={styles.pageInfo}>
+          Вы успешно{'\n'}
+          зарегистрировались
+        </Text>
 
         <TouchableOpacity
-          style={styles.loginButton}
+          style={styles.regButt}
           onPress={() => {
-            navigation.navigate('ForgetPasswordCode')
+            navigation.navigate('Login')
           }}>
-          <MainButton text={'отправить код'} />
+          <MainButton text={'войти'} />
         </TouchableOpacity>
-
       </View>
 
     </SafeAreaView>
@@ -70,25 +67,13 @@ const styles = StyleSheet.create({
   },
   //  standarts
 
-  emailInput: {
-    borderWidth: 1,
-    borderColor: '#AF9EA0',
-    borderRadius: 10,
-    height: 40,
-    width: '100%',
-    paddingLeft: 20,
-    marginTop: 30,
-    fontSize: 15
-  },
-  loginButton: {
-    marginTop: 32
-  },
-  infoPage: {
-    fontWeight: '400',
-    fontSize: 14,
-    textAlign: 'center',
+  pageInfo: {
     marginTop: 19,
+    textAlign: 'center',
     color: '#553241'
+  },
+  regButt: {
+    marginTop: 38
   }
 
 })

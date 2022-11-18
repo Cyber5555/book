@@ -1,5 +1,5 @@
 import React from "react"
-import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, TextInput, KeyboardAvoidingView } from "react-native"
+import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, TextInput, } from "react-native"
 import GoBack from "../../assets/NavIcons/GoBack"
 import MainButton from "../../assets/NavIcons/MainButton"
 

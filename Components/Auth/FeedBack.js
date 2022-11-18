@@ -1,5 +1,5 @@
 import React from "react"
-import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, TextInput, KeyboardAvoidingView } from "react-native"
+import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, TextInput, } from "react-native"
 import GoBack from "../../assets/NavIcons/GoBack"
 import MainButton from "../../assets/NavIcons/MainButton"
 
@@ -82,7 +82,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#AF9EA0',
     marginTop: 32,
-    paddingLeft: 20
+    paddingLeft: 20,
+    fontSize: 15
   },
   feedBackParent: {
     width: '100%',

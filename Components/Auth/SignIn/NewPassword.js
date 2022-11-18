@@ -4,7 +4,7 @@ import GoBack from "../../../assets/NavIcons/GoBack"
 import MainButton from "../../../assets/NavIcons/MainButton"
 
 
-export default function ForgetPassword({ navigation }) {
+export default function NewPassword({ navigation }) {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -13,7 +13,7 @@ export default function ForgetPassword({ navigation }) {
           <TouchableOpacity
             style={styles.GoBack}
             onPress={() => {
-              navigation.navigate('Login')
+              navigation.navigate('ForgetPasswordCode')
             }}>
             <GoBack />
           </TouchableOpacity>
@@ -21,20 +21,33 @@ export default function ForgetPassword({ navigation }) {
           <Text style={styles.title}>Восстановление</Text>
         </View>
 
-        <Text style={styles.infoPage}>Мы отправим 4-х значный код на вашу{'\n'} эл.почту для подтверждения личности</Text>
+        <Text style={styles.pageInfo}>
+          Придумайте сложный пароль,содержащий{'\n'}
+          строчные и прописные буквы
+        </Text>
+
 
         <TextInput
-          style={styles.emailInput}
-          placeholder="эл.почта"
-          keyboardType="email-address"
+          style={styles.newPassword}
+          placeholder="новый пароль"
+          passwordRules={true}
+          secureTextEntry={true}
         />
 
+        <TextInput
+          style={styles.newPassword}
+          placeholder="повторите пароль"
+          secureTextEntry={true}
+          passwordRules={true}
+        />
+
+
         <TouchableOpacity
-          style={styles.loginButton}
+          style={styles.confirmButton}
           onPress={() => {
-            navigation.navigate('ForgetPasswordCode')
+            navigation.navigate('AccountUser')
           }}>
-          <MainButton text={'отправить код'} />
+          <MainButton text={'подтвердить'} />
         </TouchableOpacity>
 
       </View>
@@ -70,25 +83,26 @@ const styles = StyleSheet.create({
   },
   //  standarts
 
-  emailInput: {
+  newPassword: {
     borderWidth: 1,
     borderColor: '#AF9EA0',
     borderRadius: 10,
     height: 40,
     width: '100%',
     paddingLeft: 20,
-    marginTop: 30,
+    marginTop: 15,
     fontSize: 15
   },
-  loginButton: {
-    marginTop: 32
-  },
-  infoPage: {
-    fontWeight: '400',
+  pageInfo: {
     fontSize: 14,
+    fontWeight: '400',
     textAlign: 'center',
+    color: '#553241',
     marginTop: 19,
-    color: '#553241'
+    marginBottom: 28
+  },
+  confirmButton: {
+    marginTop: 50
   }
 
 })

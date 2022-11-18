@@ -5,7 +5,7 @@ export default function MainButton({ text }) {
   return (
 
     <View style={styles.butParent}>
-      <Text>{text}</Text>
+      <Text style={styles.butText}>{text}</Text>
     </View>
 
   )
@@ -21,5 +21,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  butText: {
+    fontWeight: '400',
+    fontSize: 19,
+    color: '#A69496'
   }
 })

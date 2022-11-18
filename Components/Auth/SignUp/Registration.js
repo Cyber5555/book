@@ -4,7 +4,7 @@ import GoBack from "../../../assets/NavIcons/GoBack"
 import MainButton from "../../../assets/NavIcons/MainButton"
 
 
-export default function ForgetPassword({ navigation }) {
+export default function Registration({ navigation }) {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -13,30 +13,49 @@ export default function ForgetPassword({ navigation }) {
           <TouchableOpacity
             style={styles.GoBack}
             onPress={() => {
-              navigation.navigate('Login')
+              navigation.navigate('AuthScreen')
             }}>
             <GoBack />
           </TouchableOpacity>
 
-          <Text style={styles.title}>Восстановление</Text>
+          <Text style={styles.title}>Регистрация</Text>
         </View>
 
-        <Text style={styles.infoPage}>Мы отправим 4-х значный код на вашу{'\n'} эл.почту для подтверждения личности</Text>
+        <TextInput
+          style={styles.inputs}
+          placeholder="имя"
+        />
+
 
         <TextInput
-          style={styles.emailInput}
+          style={styles.inputs}
           placeholder="эл.почта"
           keyboardType="email-address"
         />
 
-        <TouchableOpacity
-          style={styles.loginButton}
-          onPress={() => {
-            navigation.navigate('ForgetPasswordCode')
-          }}>
-          <MainButton text={'отправить код'} />
-        </TouchableOpacity>
+        <TextInput
+          style={styles.inputs}
+          placeholder="пароль"
+          secureTextEntry={true}
+          passwordRules={true}
+        />
 
+        <TextInput
+          style={styles.inputs}
+          placeholder="повтор пароля"
+          secureTextEntry={true}
+          passwordRules={true}
+        />
+
+
+
+        <TouchableOpacity
+          style={styles.regButt}
+          onPress={() => {
+            navigation.navigate('ConfirmRegister')
+          }}>
+          <MainButton text={'зарегистрироваться'} />
+        </TouchableOpacity>
       </View>
 
     </SafeAreaView>
@@ -58,6 +77,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: 35,
+    marginBottom: 25
   },
   GoBack: {
     position: 'absolute',
@@ -70,25 +90,19 @@ const styles = StyleSheet.create({
   },
   //  standarts
 
-  emailInput: {
+  inputs: {
     borderWidth: 1,
     borderColor: '#AF9EA0',
     borderRadius: 10,
     height: 40,
     width: '100%',
     paddingLeft: 20,
-    marginTop: 30,
+    marginTop: 15,
     fontSize: 15
   },
-  loginButton: {
-    marginTop: 32
-  },
-  infoPage: {
-    fontWeight: '400',
-    fontSize: 14,
-    textAlign: 'center',
-    marginTop: 19,
-    color: '#553241'
+  regButt: {
+    marginTop: 60,
+    
   }
 
 })

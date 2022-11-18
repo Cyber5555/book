@@ -1,5 +1,5 @@
 import React from "react"
-import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, TextInput, KeyboardAvoidingView } from "react-native"
+import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, TextInput, } from "react-native"
 import GoBack from "../../../assets/NavIcons/GoBack"
 import MainButton from "../../../assets/NavIcons/MainButton"
 
@@ -29,7 +29,11 @@ export default function ForgetPasswordCode({ navigation }) {
           keyboardType="number-pad"
         />
 
-        <TouchableOpacity style={styles.confirmButton}>
+        <TouchableOpacity
+          style={styles.confirmButton}
+          onPress={() => {
+            navigation.navigate('NewPassword')
+          }}>
           <MainButton text={'подтвердить'} />
         </TouchableOpacity>
 
@@ -73,7 +77,8 @@ const styles = StyleSheet.create({
     height: 40,
     width: '100%',
     paddingLeft: 20,
-    marginTop: 49
+    marginTop: 49,
+    fontSize: 15
   },
   confirmButton: {
     marginTop: 50

@@ -9,12 +9,19 @@ import {
   AllBooksIcon
 } from '../../assets/NavIcons/NavIcons';
 import StartAndBookComponents from '../StartAndBook/StartAndBooks';
-import AllBooksComponent from '../AllBooks/AllBook';
+import SearchedBooks from '../AllBooks/SearchedBooks';
 import FeedBack from '../Auth/FeedBack';
 import AboutTheApplication from '../Auth/AboutTheApplication';
 import Login from '../Auth/SignIn/Login';
 import ForgetPassword from '../Auth/SignIn/ForgetPassword';
 import ForgetPasswordCode from '../Auth/SignIn/ForgetPasswordCode';
+import NewPassword from '../Auth/SignIn/NewPassword';
+import AccountUser from '../Auth/SignIn/AccountUser';
+import Registration from '../Auth/SignUp/Registration';
+import ConfirmRegister from '../Auth/SignUp/ConfirmRegister';
+import SuccessfulRegister from '../Auth/SignUp/SuccessfulRegister';
+import AllBook from '../AllBooks/AllBook';
+import PisatelSinglPage from '../AllBooks/PisatelSinglPage';
 
 
 
@@ -44,7 +51,7 @@ export default function NavigationMenuComponent() {
         },
       }}>
       <Tab.Screen
-        name="AllBooks"
+        name="SearchedBooks"
         component={AllBooksFunc}
         options={{
           tabBarIcon: ({ focused }) => {
@@ -115,7 +122,7 @@ const ProfileScreens = () => {
           headerShown: false,
         }}
       />
-       <Stack.Screen
+      <Stack.Screen
         name="ForgetPassword"
         component={ForgetPassword}
         options={{
@@ -125,6 +132,41 @@ const ProfileScreens = () => {
       <Stack.Screen
         name="ForgetPasswordCode"
         component={ForgetPasswordCode}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="NewPassword"
+        component={NewPassword}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="AccountUser"
+        component={AccountUser}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Registration"
+        component={Registration}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ConfirmRegister"
+        component={ConfirmRegister}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="SuccessfulRegister"
+        component={SuccessfulRegister}
         options={{
           headerShown: false,
         }}
@@ -161,13 +203,26 @@ const AllBooksFunc = () => {
         tabBarShowLabel: false,
       })}>
       <Stack.Screen
-        name="AllBook"
-        component={AllBooksComponent}
+        name="SearchedBooks"
+        component={SearchedBooks}
         options={{
           headerShown: false,
         }}
       />
-
+      <Stack.Screen
+        name="AllBook"
+        component={AllBook}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="PisatelSinglPage"
+        component={PisatelSinglPage}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack.Navigator>
   );
 };

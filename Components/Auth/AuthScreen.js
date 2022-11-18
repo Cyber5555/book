@@ -31,7 +31,11 @@ export default function AuthScreenComponent({ navigation }) {
           <MainButton text={'войти'} />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.buttons}>
+        <TouchableOpacity
+          style={styles.buttons}
+          onPress={() => {
+            navigation.navigate('Registration')
+          }}>
           <MainButton text={'зарегистрироваться'} />
         </TouchableOpacity>
 

@@ -4,7 +4,7 @@ import GoBack from "../../../assets/NavIcons/GoBack"
 import MainButton from "../../../assets/NavIcons/MainButton"
 
 
-export default function ForgetPassword({ navigation }) {
+export default function ConfirmRegister({ navigation }) {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -13,30 +13,35 @@ export default function ForgetPassword({ navigation }) {
           <TouchableOpacity
             style={styles.GoBack}
             onPress={() => {
-              navigation.navigate('Login')
+              navigation.navigate('Registration')
             }}>
             <GoBack />
           </TouchableOpacity>
 
-          <Text style={styles.title}>Восстановление</Text>
+          <Text style={styles.title}>Регистрация</Text>
         </View>
 
-        <Text style={styles.infoPage}>Мы отправим 4-х значный код на вашу{'\n'} эл.почту для подтверждения личности</Text>
+
+        <Text style={styles.pageInfo}>
+          Мы отправим 4-х значный код на вашу{'\n'}
+          эл.почту для подтверждения личности
+        </Text>
 
         <TextInput
-          style={styles.emailInput}
-          placeholder="эл.почта"
-          keyboardType="email-address"
+          style={styles.confirmInput}
+          placeholder="код подтверждения"
+          keyboardType="number-pad"
         />
 
-        <TouchableOpacity
-          style={styles.loginButton}
-          onPress={() => {
-            navigation.navigate('ForgetPasswordCode')
-          }}>
-          <MainButton text={'отправить код'} />
-        </TouchableOpacity>
 
+
+        <TouchableOpacity
+          style={styles.regButt}
+          onPress={() => {
+            navigation.navigate('SuccessfulRegister')
+          }}>
+          <MainButton text={'подтвердить'} />
+        </TouchableOpacity>
       </View>
 
     </SafeAreaView>
@@ -70,25 +75,21 @@ const styles = StyleSheet.create({
   },
   //  standarts
 
-  emailInput: {
+  pageInfo: {
+    marginTop: 19,
+    textAlign: 'center',
+    color: '#553241'
+  },
+  confirmInput: {
     borderWidth: 1,
     borderColor: '#AF9EA0',
     borderRadius: 10,
     height: 40,
     width: '100%',
     paddingLeft: 20,
-    marginTop: 30,
-    fontSize: 15
+    marginTop: 30
   },
-  loginButton: {
-    marginTop: 32
-  },
-  infoPage: {
-    fontWeight: '400',
-    fontSize: 14,
-    textAlign: 'center',
-    marginTop: 19,
-    color: '#553241'
+  regButt: {
+    marginTop: 50
   }
-
 })

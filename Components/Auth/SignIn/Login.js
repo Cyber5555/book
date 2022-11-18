@@ -1,5 +1,5 @@
 import React from "react"
-import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, TextInput, KeyboardAvoidingView } from "react-native"
+import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, TextInput, } from "react-native"
 import GoBack from "../../../assets/NavIcons/GoBack"
 import MainButton from "../../../assets/NavIcons/MainButton"
 
@@ -43,7 +43,11 @@ export default function Login({ navigation }) {
           Забыли пароль
         </Text>
 
-        <TouchableOpacity style={styles.loginButton}>
+        <TouchableOpacity
+          style={styles.loginButton}
+          onPress={() => {
+            navigation.navigate('StartAndBook')
+          }}>
           <MainButton text={'войти'} />
         </TouchableOpacity>
 
@@ -88,14 +92,18 @@ const styles = StyleSheet.create({
     height: 40,
     width: '100%',
     paddingLeft: 20,
-    marginTop: 15
+    marginTop: 15,
+    fontSize: 15,
+    // lineHeight: 25.87
   },
   forgetPasswordText: {
     fontSize: 15,
     fontWeight: '400',
     textAlign: 'right',
     color: '#A69496',
-    marginTop: 8
+    marginTop: 8,
+    textDecorationLine: "underline",
+    textDecorationColor: '#A69496'
   },
   loginButton: {
     marginTop: 32
