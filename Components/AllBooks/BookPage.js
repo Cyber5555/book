@@ -4,7 +4,7 @@ import Counter from "../../assets/NavIcons/Counter"
 import GoBack from "../../assets/NavIcons/GoBack"
 
 
-export default function PisatelSinglPage({ navigation }) {
+export default function BookPage({ navigation }) {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -18,8 +18,10 @@ export default function PisatelSinglPage({ navigation }) {
             <GoBack />
           </TouchableOpacity>
 
-          <Text style={styles.title}>Толстой Лев{'\n'}Николаевич</Text>
+          <Text style={styles.title}>Кавказский пленник</Text>
         </View>
+
+        <Text style={styles.pisatelName}>Толстой Лев Николаевич</Text>
 
         <Image source={require('../../assets/image/image1.png')} style={styles.userIcon} />
 
@@ -44,7 +46,7 @@ export default function PisatelSinglPage({ navigation }) {
 
           }}>
           <Text style={styles.buttonsText}>Библиография</Text>
-          <Counter counterText={50}/>
+          <Counter counterText={50} />
         </TouchableOpacity>
 
       </View>
@@ -79,7 +81,10 @@ const styles = StyleSheet.create({
   },
   //  standarts
 
-
+  pisatelName: {
+    color: '#553241',
+    marginTop: 10
+  },
   buttons: {
     marginTop: 15,
     width: '100%',

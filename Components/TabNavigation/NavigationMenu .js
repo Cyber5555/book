@@ -22,6 +22,7 @@ import ConfirmRegister from '../Auth/SignUp/ConfirmRegister';
 import SuccessfulRegister from '../Auth/SignUp/SuccessfulRegister';
 import AllBook from '../AllBooks/AllBook';
 import PisatelSinglPage from '../AllBooks/PisatelSinglPage';
+import BookPage from '../AllBooks/BookPage';
 
 
 
@@ -219,6 +220,13 @@ const AllBooksFunc = () => {
       <Stack.Screen
         name="PisatelSinglPage"
         component={PisatelSinglPage}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="BookPage"
+        component={BookPage}
         options={{
           headerShown: false,
         }}

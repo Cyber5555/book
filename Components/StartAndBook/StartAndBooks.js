@@ -4,7 +4,7 @@ import LinearGradient from "react-native-linear-gradient";
 import Books from "../BookAndPisatel/Books";
 
 
-export default function StartAndBookComponents() {
+export default function StartAndBookComponents({ navigation }) {
 
   const itemInfos = [
     {
@@ -37,7 +37,15 @@ export default function StartAndBookComponents() {
 
         <FlatList
           data={itemInfos}
-          renderItem={Books}
+          renderItem={(item) => {
+            return (
+              <TouchableOpacity onPress={() => {
+                navigation.navigate('BookPage')
+              }}>
+                <Books key={item.index} />
+              </TouchableOpacity>
+            )
+          }}
           showsVerticalScrollIndicator={false}
         />
 

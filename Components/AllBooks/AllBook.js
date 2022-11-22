@@ -296,7 +296,11 @@ export default function AllBook({ navigation }) {
       <View style={styles.container}>
 
         <View style={styles.backAndSearch}>
-          <TouchableOpacity style={styles.GoBack}>
+          <TouchableOpacity
+            style={styles.GoBack}
+            onPress={() => {
+              navigation.navigate('StartAndBook')
+            }}>
             <GoBack />
           </TouchableOpacity>
 
