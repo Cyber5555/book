@@ -1,5 +1,6 @@
 import React from "react"
 import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, TextInput, Image, } from "react-native"
+import LinearGradient from "react-native-linear-gradient"
 import Counter from "../../assets/NavIcons/Counter"
 import GoBack from "../../assets/NavIcons/GoBack"
 
@@ -23,7 +24,24 @@ export default function BookPage({ navigation }) {
 
         <Text style={styles.pisatelName}>Толстой Лев Николаевич</Text>
 
-        <Image source={require('../../assets/image/image1.png')} style={styles.userIcon} />
+        <LinearGradient style={styles.bookIcon} colors={['#A82CD0', '#D64163']}>
+
+          <Text style={styles.blueViewPisatel}>
+            Толстой {'\n'}
+            Лев Николаевич
+          </Text>
+
+          <View style={styles.line}></View>
+
+          <Text style={styles.blueViewTitle} numberOfLines={7}>
+            Сказка об Иване-дураке и его
+            двух братьях: Семёне-воине и
+            Тарасе-брюхане, и немой сестре
+            Маланье, и о старом дьяволе и
+            трёх чертенятах
+          </Text>
+        </LinearGradient>
+
 
         <View style={styles.progressParent}>
           <View style={styles.progressValue}>
@@ -103,10 +121,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '400'
   },
-  userIcon: {
+  bookIcon: {
     width: 168,
     height: 236,
-    marginTop: 13
+    marginTop: 13,
+    borderRadius: 14
   },
   progressParent: {
     width: '100%',
@@ -130,6 +149,31 @@ const styles = StyleSheet.create({
     fontSize: 12,
     position: 'absolute',
     left: '47.5%'
+  },
+
+
+
+
+  blueViewPisatel: {
+    textAlign: 'center',
+    fontSize: 14,
+    color: '#ffffff',
+    marginTop: 10
+  },
+  line: {
+    backgroundColor: '#fff',
+    width: '80%',
+    height: 1,
+    alignSelf: 'center',
+    marginTop: 7
+  },
+  blueViewTitle: {
+    fontSize: 8,
+    color: '#ffffff',
+    textAlign: 'center',
+    marginTop: 7,
+    fontWeight: '600',
+    paddingHorizontal: 4
   }
 
 })

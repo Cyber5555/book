@@ -21,13 +21,13 @@ const styles = StyleSheet.create({
   },
   corner: {
     position: 'absolute',
-    left: -10,
+    left: -8,
     top: 0,
     width: 0,
     height: 0,
     borderStyle: 'solid',
     borderTopWidth: 11,
-    borderRightWidth: 10,
+    borderRightWidth: 8,
     borderBottomWidth: 11,
     borderLeftWidth: 0,
 
