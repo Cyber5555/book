@@ -3,6 +3,7 @@ import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, TextInput, Imag
 import LinearGradient from "react-native-linear-gradient"
 import Counter from "../../assets/NavIcons/Counter"
 import GoBack from "../../assets/NavIcons/GoBack"
+import NavReaderIcon from "../../assets/NavIcons/NavReaderIcon"
 
 
 export default function BookPage({ navigation }) {
@@ -24,23 +25,26 @@ export default function BookPage({ navigation }) {
 
         <Text style={styles.pisatelName}>Толстой Лев Николаевич</Text>
 
-        <LinearGradient style={styles.bookIcon} colors={['#A82CD0', '#D64163']}>
+        <View style={styles.navReaderParent}>
 
-          <Text style={styles.blueViewPisatel}>
-            Толстой {'\n'}
-            Лев Николаевич
-          </Text>
+          <LinearGradient style={styles.bookIcon} colors={['#A82CD0', '#D64163']}>
 
-          <View style={styles.line}></View>
+            <Text style={styles.blueViewPisatel}>
+              Толстой {'\n'}
+              Лев Николаевич
+            </Text>
 
-          <Text style={styles.blueViewTitle} numberOfLines={7}>
-            Сказка об Иване-дураке и его
-            двух братьях: Семёне-воине и
-            Тарасе-брюхане, и немой сестре
-            Маланье, и о старом дьяволе и
-            трёх чертенятах
-          </Text>
-        </LinearGradient>
+            <View style={styles.line}></View>
+
+            <Text style={styles.blueViewTitle} numberOfLines={7}>
+              Кавказский пленник
+            </Text>
+
+          </LinearGradient>
+
+          {/* <NavReaderIcon /> */}
+
+        </View>
 
 
         <View style={styles.progressParent}>
@@ -150,10 +154,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: '47.5%'
   },
-
-
-
-
   blueViewPisatel: {
     textAlign: 'center',
     fontSize: 14,
@@ -168,12 +168,17 @@ const styles = StyleSheet.create({
     marginTop: 7
   },
   blueViewTitle: {
-    fontSize: 8,
+    fontSize: 14,
     color: '#ffffff',
     textAlign: 'center',
     marginTop: 7,
     fontWeight: '600',
     paddingHorizontal: 4
+  },
+  navReaderParent: {
+    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignItems: 'flex-end'
   }
 
 })

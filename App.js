@@ -6,6 +6,7 @@ import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'rec
 import NavigationMenu from './Components/TabNavigation/NavigationMenu ';
 import NavigationMenuComponent from './Components/TabNavigation/NavigationMenu ';
 import StartAndBookComponents from './Components/StartAndBook/StartAndBooks';
+import BookPage from './Components/AllBooks/BookPage';
 
 
 const Stack = createStackNavigator();
@@ -26,20 +27,12 @@ export default function App() {
           barStyle="dark-content"
         />
         <Stack.Navigator
-         // initialRouteName="StartAndBook"
+          // initialRouteName="StartAndBook"
           screenOptions={({ route }) => ({
             tabBarShowLabel: false,
             headerShown: false
           })}>
-          {/* <Stack.Screen
-            name="StartAndBook"
-            component={StartAndBookComponents}
-            options={({ navigation }) => ({
-              title: '',
-              headerTransparent: true,
-              // headerLeft: () => <HeaderTitle navigation={navigation} title={'По номеру телефона'} />,
-            })}
-          /> */}
+
 
           <Stack.Screen
             name="NavigationMenu"

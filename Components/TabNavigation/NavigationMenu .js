@@ -32,7 +32,7 @@ const Stack = createStackNavigator();
 export default function NavigationMenuComponent() {
   return (
     <Tab.Navigator
-      initialRouteName='StartAndBook'
+      initialRouteName='StartAndBookFunk'
       screenOptions={{
         tabBarShowLabel: false,
         headerShown: false,
@@ -52,7 +52,7 @@ export default function NavigationMenuComponent() {
         },
       }}>
       <Tab.Screen
-        name="SearchedBooks"
+        name="AllBooksFunc"
         component={AllBooksFunc}
         options={{
           tabBarIcon: ({ focused }) => {
@@ -63,7 +63,7 @@ export default function NavigationMenuComponent() {
         }}
       />
       <Tab.Screen
-        name="StartAndBook"
+        name="StartAndBookFunk"
         component={StartAndBookFunk}
         options={{
           tabBarIcon: ({ focused }) => {
