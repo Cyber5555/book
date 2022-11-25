@@ -428,7 +428,9 @@ export default function AllBook({ navigation }) {
               keyExtractor={(item) => item.id}
               renderItem={() => {
                 return (
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={() => {
+                    navigation.navigate('BookPage')
+                  }}>
                     <Books />
                   </TouchableOpacity>
                 )

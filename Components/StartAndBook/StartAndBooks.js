@@ -39,10 +39,10 @@ export default function StartAndBookComponents({ navigation }) {
           data={itemInfos}
           renderItem={(item) => {
             return (
-              <TouchableOpacity onPress={() => {
+              <TouchableOpacity key={item.index} onPress={() => {
                 navigation.navigate('BookPage')
               }}>
-                <Books key={item.index} />
+                <Books/>
               </TouchableOpacity>
             )
           }}

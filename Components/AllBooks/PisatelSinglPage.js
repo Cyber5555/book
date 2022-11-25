@@ -41,10 +41,10 @@ export default function PisatelSinglPage({ navigation }) {
         <TouchableOpacity
           style={styles.buttons}
           onPress={() => {
-
+            navigation.navigate('Biblografia')
           }}>
           <Text style={styles.buttonsText}>Библиография</Text>
-          <Counter counterText={50}/>
+          <Counter counterText={50} />
         </TouchableOpacity>
 
       </View>

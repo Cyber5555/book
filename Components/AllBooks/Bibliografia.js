@@ -1,12 +1,10 @@
 import React from "react"
 import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, TextInput, Image, } from "react-native"
-import LinearGradient from "react-native-linear-gradient"
 import Counter from "../../assets/NavIcons/Counter"
 import GoBack from "../../assets/NavIcons/GoBack"
-import NavReaderIcon from "../../assets/NavIcons/NavReaderIcon"
 
 
-export default function BookPage({ navigation }) {
+export default function Biblografia({ navigation }) {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -20,41 +18,11 @@ export default function BookPage({ navigation }) {
             <GoBack />
           </TouchableOpacity>
 
-          <Text style={styles.title}>Кавказский пленник</Text>
+          <Text style={styles.title}>Толстой Лев{'\n'}Николаевич</Text>
         </View>
 
-        <Text style={styles.pisatelName}>Толстой Лев Николаевич</Text>
+        
 
-        <View style={styles.navReaderParent}>
-
-          <LinearGradient style={styles.bookIcon} colors={['#A82CD0', '#D64163']}>
-
-            <Text style={styles.blueViewPisatel}>
-              Толстой {'\n'}
-              Лев Николаевич
-            </Text>
-
-            <View style={styles.line}></View>
-
-            <Text style={styles.blueViewTitle} numberOfLines={7}>
-              Кавказский пленник
-            </Text>
-
-          </LinearGradient>
-
-          <TouchableOpacity style={styles.NavReaderIcon}>
-            <NavReaderIcon />
-          </TouchableOpacity>
-
-        </View>
-
-
-        <View style={styles.progressParent}>
-          <View style={styles.progressValue}>
-
-          </View>
-          <Text style={styles.progressPercent}>37%</Text>
-        </View>
 
         <TouchableOpacity
           style={styles.buttons}
@@ -62,6 +30,15 @@ export default function BookPage({ navigation }) {
 
           }}>
           <Text style={styles.buttonsText}>Информация</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.buttons}
+          onPress={() => {
+
+          }}>
+          <Text style={styles.buttonsText}>Библиография</Text>
+          <Counter counterText={50}/>
         </TouchableOpacity>
 
       </View>
@@ -96,10 +73,7 @@ const styles = StyleSheet.create({
   },
   //  standarts
 
-  pisatelName: {
-    color: '#553241',
-    marginTop: 10
-  },
+
   buttons: {
     marginTop: 15,
     width: '100%',
@@ -118,11 +92,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '400'
   },
-  bookIcon: {
+  userIcon: {
     width: 168,
     height: 236,
-    marginTop: 13,
-    borderRadius: 14
+    marginTop: 13
   },
   progressParent: {
     width: '100%',
@@ -146,39 +119,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     position: 'absolute',
     left: '47.5%'
-  },
-  blueViewPisatel: {
-    textAlign: 'center',
-    fontSize: 14,
-    color: '#ffffff',
-    marginTop: 10
-  },
-  line: {
-    backgroundColor: '#fff',
-    width: '80%',
-    height: 1,
-    alignSelf: 'center',
-    marginTop: 7
-  },
-  blueViewTitle: {
-    fontSize: 14,
-    color: '#ffffff',
-    textAlign: 'center',
-    marginTop: 7,
-    fontWeight: '600',
-    paddingHorizontal: 4
-  },
-  navReaderParent: {
-    justifyContent: "space-between",
-    flexDirection: 'row',
-    alignItems: 'flex-end'
-  },
-  NavReaderIcon: {
-    width: 105,
-    height: 79,
-    borderWidth: 1,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center'
   }
+
 })

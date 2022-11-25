@@ -23,6 +23,7 @@ import SuccessfulRegister from '../Auth/SignUp/SuccessfulRegister';
 import AllBook from '../AllBooks/AllBook';
 import PisatelSinglPage from '../AllBooks/PisatelSinglPage';
 import BookPage from '../AllBooks/BookPage';
+import Biblografia from '../AllBooks/Bibliografia';
 
 
 
@@ -190,13 +191,12 @@ const StartAndBookFunk = () => {
           headerShown: false,
         }}
       />
-
     </Stack.Navigator>
   );
 };
 
 
-const AllBooksFunc = () => {
+export const AllBooksFunc = () => {
   return (
     <Stack.Navigator
       initialRouteName="AllBook"
@@ -231,6 +231,15 @@ const AllBooksFunc = () => {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="Biblografia"
+        component={Biblografia}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack.Navigator>
   );
 };
+
+

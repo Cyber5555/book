@@ -3,10 +3,10 @@ import { StatusBar, Text } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
-import NavigationMenu from './Components/TabNavigation/NavigationMenu ';
-import NavigationMenuComponent from './Components/TabNavigation/NavigationMenu ';
-import StartAndBookComponents from './Components/StartAndBook/StartAndBooks';
+import NavigationMenuComponent, { AllBooksFunc } from './Components/TabNavigation/NavigationMenu ';
+import AllBook from './Components/AllBooks/AllBook';
 import BookPage from './Components/AllBooks/BookPage';
+
 
 
 const Stack = createStackNavigator();
@@ -39,6 +39,8 @@ export default function App() {
             component={NavigationMenuComponent}
             options={{ headerShown: false }}
           />
+
+
         </Stack.Navigator>
       </NavigationContainer>
     </RecoilRoot>
