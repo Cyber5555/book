@@ -4,8 +4,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
 import NavigationMenuComponent, { AllBooksFunc } from './Components/TabNavigation/NavigationMenu ';
-import AllBook from './Components/AllBooks/AllBook';
-import BookPage from './Components/AllBooks/BookPage';
+import ReaderScreen from './Components/ReaderFolder/ReaderScreen';
+
 
 
 
@@ -27,19 +27,29 @@ export default function App() {
           barStyle="dark-content"
         />
         <Stack.Navigator
-          // initialRouteName="StartAndBook"
+          initialRouteName="NavigationMenu"
           screenOptions={({ route }) => ({
             tabBarShowLabel: false,
             headerShown: false
           })}>
-
-
           <Stack.Screen
             name="NavigationMenu"
             component={NavigationMenuComponent}
             options={{ headerShown: false }}
           />
+          {/* <Stack.Screen
+            name="AllBooksFunc"
+            component={AllBooksFunc}
+            options={{ headerShown: false }}
+          /> */}
 
+          <Stack.Screen
+            name="ReaderScreen"
+            component={ReaderScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
 
         </Stack.Navigator>
       </NavigationContainer>

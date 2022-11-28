@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -24,13 +24,13 @@ import AllBook from '../AllBooks/AllBook';
 import PisatelSinglPage from '../AllBooks/PisatelSinglPage';
 import BookPage from '../AllBooks/BookPage';
 import Biblografia from '../AllBooks/Bibliografia';
-
+import ReaderScreen from '../ReaderFolder/ReaderScreen';
 
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-export default function NavigationMenuComponent() {
+export default function NavigationMenuComponent({ navigation, route }) {
   return (
     <Tab.Navigator
       initialRouteName='StartAndBookFunk'
@@ -191,21 +191,37 @@ const StartAndBookFunk = () => {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="BookPage"
+        component={BookPage}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack.Navigator>
   );
 };
 
-
-export const AllBooksFunc = () => {
+export const AllBooksFunc = ({ navigation }) => {
+  // const routes = navigation.getState()?.routes;
+  // prevRoute = routes[routes.length - 2];
+  // console.log(prevRoute);
   return (
     <Stack.Navigator
-      initialRouteName="AllBook"
+      initialRouteName='AllBooks'
       screenOptions={({ route }) => ({
         tabBarShowLabel: false,
       })}>
       <Stack.Screen
-        name="SearchedBooks"
-        component={SearchedBooks}
+        name="AllBooks"
+        component={AllBook}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="BookPage"
+        component={BookPage}
         options={{
           headerShown: false,
         }}
@@ -218,15 +234,15 @@ export const AllBooksFunc = () => {
         }}
       />
       <Stack.Screen
-        name="PisatelSinglPage"
-        component={PisatelSinglPage}
+        name="SearchedBooks"
+        component={SearchedBooks}
         options={{
           headerShown: false,
         }}
       />
       <Stack.Screen
-        name="BookPage"
-        component={BookPage}
+        name="PisatelSinglPage"
+        component={PisatelSinglPage}
         options={{
           headerShown: false,
         }}

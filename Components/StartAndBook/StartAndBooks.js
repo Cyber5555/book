@@ -2,9 +2,10 @@ import React from "react";
 import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import Books from "../BookAndPisatel/Books";
+import { AllBooksFunc } from "../TabNavigation/NavigationMenu ";
 
 
-export default function StartAndBookComponents({ navigation }) {
+export default function StartAndBookComponents({ navigation, route }) {
 
   const itemInfos = [
     {
@@ -31,6 +32,7 @@ export default function StartAndBookComponents({ navigation }) {
   ]
 
 
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -39,10 +41,12 @@ export default function StartAndBookComponents({ navigation }) {
           data={itemInfos}
           renderItem={(item) => {
             return (
-              <TouchableOpacity key={item.index} onPress={() => {
-                navigation.navigate('BookPage')
-              }}>
-                <Books/>
+              <TouchableOpacity
+                key={item.index}
+                onPress={() => {
+                  navigation.navigate('AllBooksFunc')
+                }}>
+                <Books />
               </TouchableOpacity>
             )
           }}

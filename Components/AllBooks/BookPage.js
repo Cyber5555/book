@@ -42,7 +42,11 @@ export default function BookPage({ navigation }) {
 
           </LinearGradient>
 
-          <TouchableOpacity style={styles.NavReaderIcon}>
+          <TouchableOpacity
+            style={styles.NavReaderIcon}
+            onPress={() => {
+              navigation.navigate('ReaderScreen')
+            }}>
             <NavReaderIcon />
           </TouchableOpacity>
 
