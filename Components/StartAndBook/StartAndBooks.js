@@ -44,7 +44,7 @@ export default function StartAndBookComponents({ navigation, route }) {
               <TouchableOpacity
                 key={item.index}
                 onPress={() => {
-                  navigation.navigate('AllBooksFunc')
+                  navigation.navigate('BookPageFunc')
                 }}>
                 <Books />
               </TouchableOpacity>

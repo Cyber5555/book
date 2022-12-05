@@ -192,8 +192,8 @@ const StartAndBookFunk = () => {
         }}
       />
       <Stack.Screen
-        name="BookPage"
-        component={BookPage}
+        name="BookPageFunc"
+        component={BookPageFunc}
         options={{
           headerShown: false,
         }}
@@ -213,26 +213,26 @@ export const AllBooksFunc = ({ navigation }) => {
         tabBarShowLabel: false,
       })}>
       <Stack.Screen
-        name="AllBooks"
-        component={AllBook}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="BookPage"
-        component={BookPage}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
         name="AllBook"
         component={AllBook}
         options={{
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="BookPageFunc"
+        component={BookPageFunc}
+        options={{
+          headerShown: false,
+        }}
+      />
+      {/* <Stack.Screen
+        name="AllBook"
+        component={AllBook}
+        options={{
+          headerShown: false,
+        }}
+      /> */}
       <Stack.Screen
         name="SearchedBooks"
         component={SearchedBooks}
@@ -259,3 +259,30 @@ export const AllBooksFunc = ({ navigation }) => {
 };
 
 
+
+
+const BookPageFunc = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName='BookPage'
+      screenOptions={({ route }) => ({
+        tabBarShowLabel: false,
+      })}>
+      <Stack.Screen
+        name="BookPage"
+        component={BookPage}
+        options={{
+          headerShown: false,
+        }}
+      />
+      {/* <Stack.Screen
+        name="BookPage"
+        component={BookPage}
+        options={{
+          headerShown: false,
+        }}
+      /> */}
+      <AllBooksIcon focused={focused}/>
+    </Stack.Navigator>
+  );
+};
