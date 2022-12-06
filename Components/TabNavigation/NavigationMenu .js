@@ -54,7 +54,7 @@ export default function NavigationMenuComponent({ navigation, route }) {
       }}>
       <Tab.Screen
         name="AllBooksFunc"
-        component={AllBooksFunc}
+        component={AllBooksFunc || BookPageFunc}
         options={{
           tabBarIcon: ({ focused }) => {
             return (
@@ -261,7 +261,7 @@ export const AllBooksFunc = ({ navigation }) => {
 
 
 
-const BookPageFunc = () => {
+const BookPageFunc = ({ focused }) => {
   return (
     <Stack.Navigator
       initialRouteName='BookPage'
@@ -275,14 +275,7 @@ const BookPageFunc = () => {
           headerShown: false,
         }}
       />
-      {/* <Stack.Screen
-        name="BookPage"
-        component={BookPage}
-        options={{
-          headerShown: false,
-        }}
-      /> */}
-      <AllBooksIcon focused={focused}/>
+      {/* <AllBooksIcon focused={focused}/> */}
     </Stack.Navigator>
   );
 };

@@ -429,7 +429,7 @@ export default function AllBook({ navigation }) {
               renderItem={() => {
                 return (
                   <TouchableOpacity onPress={() => {
-                    navigation.navigate('BookPage')
+                    navigation.navigate('BookPageFunc')
                   }}>
                     <Books />
                   </TouchableOpacity>
