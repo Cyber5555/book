@@ -96,7 +96,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    fontWeight: "400",
+    fontWeight: "700",
+    paddingTop: 3,
   },
   //  standarts
 
@@ -155,7 +156,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 14,
     color: '#ffffff',
-    marginTop: 10
+    marginTop: 20
   },
   line: {
     backgroundColor: '#fff',

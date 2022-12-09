@@ -41,14 +41,14 @@ export default function NavigationMenuComponent({ navigation, route }) {
         tabBarStyle: {
           position: 'absolute',
           bottom: 25,
-          left: '20%',
+          left: '18.5%',
           alignItems: 'center',
           justifyContent: 'space-between',
           elevation: 0,
           backgroundColor: '#EDEAE4',
           borderTopWidth: 0,
           height: 70,
-          width: '60%',
+          width: '65%',
           borderRadius: 50,
         },
       }}>

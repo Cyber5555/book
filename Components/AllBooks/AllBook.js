@@ -275,19 +275,28 @@ export default function AllBook({ navigation }) {
 
   const [active, setActive] = useState(false)
   const [searchActive, setSearchActive] = useState(false)
-
+  const [searchActiveButton, setSearchActiveButton] = useState(null)
 
   const renderItem = ({ item }) => {
-    return (
-      <TouchableOpacity style={styles.letterParent}>
-        <Text style={styles.letter}>
-          {item.name}
-        </Text>
-        <Text style={styles.count}>
-          {item.count}
-        </Text>
-      </TouchableOpacity>
-    )
+    // return (
+    <TouchableOpacity
+      style={[styles.letterParent, searchActiveButton == item.id ? { backgroundColor: 'white' } : { backgroundColor: '#EDEAE4' }]}
+      onPress={() => {
+        if (item.id == searchActiveButton) {
+          setSearchActiveButton(null)
+        }
+        else {
+          setSearchActiveButton(item.id)
+        }
+      }}>
+      <Text style={[styles.letter, searchActiveButton == item.id ? { color: '#553241' } : { color: '#A69496' }]}>
+        {item.name}
+      </Text>
+      <Text style={[styles.count, searchActiveButton == item.id ? { color: '#553241' } : { color: '#A69496' }]}>
+        {item.count}
+      </Text>
+    </TouchableOpacity>
+    // )
   }
 
 
@@ -321,37 +330,26 @@ export default function AllBook({ navigation }) {
         </View>
 
         <View style={styles.searchNameAuthorCountParent}>
+
           <TouchableOpacity
-            style={[styles.searchNameAuthorCount,
-            active === false ?
-              { backgroundColor: '#FFFFFF', borderBottomWidth: 0 }
-              : { backgroundColor: '#EDEAE4', borderBottomWidth: 1 }]}
+            style={[styles.searchNameAuthorCount, active === false ? { backgroundColor: '#FFFFFF', borderBottomWidth: 0 } : { backgroundColor: '#EDEAE4', borderBottomWidth: 1 }]}
             onPress={() => {
               setActive(false)
             }}>
-            <Text
-              style={[styles.searchName,
-              active === false ? { color: '#553241' } : { color: '#A69496' }]
-              }>
-              автор
-            </Text>
+
+            <Text style={[styles.searchName, active === false ? { color: '#553241' } : { color: '#A69496' }]}>автор</Text>
 
           </TouchableOpacity>
 
           <View style={{ width: '4%', borderBottomWidth: 1, borderColor: '#A69496', height: 44 }}></View>
 
-          <TouchableOpacity style={[styles.searchNameAuthorCount,
-          active === true ?
-            { backgroundColor: '#FFFFFF', borderBottomWidth: 0 }
-            : { backgroundColor: '#EDEAE4', borderBottomWidth: 1 }]}
+          <TouchableOpacity
+            style={[styles.searchNameAuthorCount, active === true ? { backgroundColor: '#FFFFFF', borderBottomWidth: 0 } : { backgroundColor: '#EDEAE4', borderBottomWidth: 1 }]}
             onPress={() => {
               setActive(true)
             }}>
-            <Text style={[styles.searchName,
-            active === true ? { color: '#553241' } : { color: '#A69496' }]
-            }>
-              год
-            </Text>
+
+            <Text style={[styles.searchName, active === true ? { color: '#553241' } : { color: '#A69496' }]}>год</Text>
 
           </TouchableOpacity>
 
@@ -362,13 +360,27 @@ export default function AllBook({ navigation }) {
             {
               searchActive === true &&
               <FlatList
-                style={{ height: '90%', position: 'relative', borderWidth: 0 }}
-                numColumns={7}
+                style={{ height: '90%', position: 'relative', borderWidth: 0, }}
+                // numColumns={7}
+                contentContainerStyle={{ flexDirection: "row", flexWrap: 'wrap', justifyContent: 'flex-start', }}
                 showsVerticalScrollIndicator={false}
                 data={active === false ? data : data1}
                 keyExtractor={(item) => item.id}
+                // renderScrollComponent={}
                 renderItem={renderItem}
               />
+              // <ScrollView style={{ height: '93%' }} showsVerticalScrollIndicator={false}>
+              //   <View style={{ flexDirection: 'row', flexWrap: 'wrap', height: '100%', position: 'relative', }}>
+              //     {
+              //       active === true && data.map((item) => {
+              //         return (
+              //           renderItem
+              //         )
+              //       })
+
+              //     }
+              //   </View>
+              // </ScrollView>
             }
             {searchActive === false &&
               <FlatList
@@ -487,9 +499,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#AF9EA0',
     borderRadius: 8,
+    padding: 0,
     paddingLeft: 14,
     backgroundColor: '#EDEAE4',
-    fontSize: 15
+    fontSize: 15,
   },
   searchIcon: {
     position: 'absolute',
@@ -538,9 +551,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 8,
     marginTop: 10,
-    marginHorizontal: 5,
+    marginHorizontal: 6,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   openLetterSearch: {
     width: '100%',

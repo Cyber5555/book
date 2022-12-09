@@ -31,6 +31,7 @@ export default function ConfirmRegister({ navigation }) {
           style={styles.confirmInput}
           placeholder="код подтверждения"
           keyboardType="number-pad"
+          maxLength={4}
         />
 
 

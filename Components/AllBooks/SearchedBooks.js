@@ -150,9 +150,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#AF9EA0',
     borderRadius: 8,
+    padding: 0,
     paddingLeft: 14,
     backgroundColor: '#EDEAE4',
-    fontSize: 15
+    fontSize: 15,
   },
   searchIcon: {
     position: 'absolute',

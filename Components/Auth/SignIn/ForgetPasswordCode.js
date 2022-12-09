@@ -26,6 +26,7 @@ export default function ForgetPasswordCode({ navigation }) {
         <TextInput
           style={styles.emailInput}
           placeholder="код подтверждения"
+          maxLength={4}
           keyboardType="number-pad"
         />
 

@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    fontWeight: "400",
+    fontWeight: "700",
   },
   //  standarts
 
