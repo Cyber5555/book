@@ -277,27 +277,11 @@ export default function AllBook({ navigation }) {
   const [searchActive, setSearchActive] = useState(false)
   const [searchActiveButton, setSearchActiveButton] = useState(null)
 
-  const renderItem = ({ item }) => {
-    // return (
-    <TouchableOpacity
-      style={[styles.letterParent, searchActiveButton == item.id ? { backgroundColor: 'white' } : { backgroundColor: '#EDEAE4' }]}
-      onPress={() => {
-        if (item.id == searchActiveButton) {
-          setSearchActiveButton(null)
-        }
-        else {
-          setSearchActiveButton(item.id)
-        }
-      }}>
-      <Text style={[styles.letter, searchActiveButton == item.id ? { color: '#553241' } : { color: '#A69496' }]}>
-        {item.name}
-      </Text>
-      <Text style={[styles.count, searchActiveButton == item.id ? { color: '#553241' } : { color: '#A69496' }]}>
-        {item.count}
-      </Text>
-    </TouchableOpacity>
-    // )
-  }
+  // const RenderItem = ({ item }) => {
+  //   return (
+
+  //   )
+  // }
 
 
   return (
@@ -357,40 +341,71 @@ export default function AllBook({ navigation }) {
 
 
           <View style={[styles.letterSearch, searchActive === true ? { height: 212 } : { height: 83 }]}>
+            {/* uxahayac */}
             {
               searchActive === true &&
-              <FlatList
-                style={{ height: '90%', position: 'relative', borderWidth: 0, }}
-                // numColumns={7}
-                contentContainerStyle={{ flexDirection: "row", flexWrap: 'wrap', justifyContent: 'flex-start', }}
-                showsVerticalScrollIndicator={false}
-                data={active === false ? data : data1}
-                keyExtractor={(item) => item.id}
-                // renderScrollComponent={}
-                renderItem={renderItem}
-              />
-              // <ScrollView style={{ height: '93%' }} showsVerticalScrollIndicator={false}>
-              //   <View style={{ flexDirection: 'row', flexWrap: 'wrap', height: '100%', position: 'relative', }}>
-              //     {
-              //       active === true && data.map((item) => {
-              //         return (
-              //           renderItem
-              //         )
-              //       })
+              <ScrollView style={{ height: '93%', }} showsVerticalScrollIndicator={false}>
+                <View style={{ flexDirection: 'row', flexWrap: 'wrap', height: '100%', position: 'relative', }}>
+                  {
+                    data.map((item, index) => {
+                      return (
+                        <TouchableOpacity
+                          key={index}
+                          style={[styles.letterParent, { margin: '1.8%', width: '13%', }, searchActiveButton == item.id ? { backgroundColor: 'white' } : { backgroundColor: '#EDEAE4' }]}
+                          onPress={() => {
+                            if (item.id == searchActiveButton) {
+                              setSearchActiveButton(null)
+                            }
+                            else {
+                              setSearchActiveButton(item.id)
+                            }
+                          }}>
+                          <Text style={[styles.letter, searchActiveButton == item.id ? { color: '#553241' } : { color: '#A69496' }]}>
+                            {item.name}
+                          </Text>
+                          <Text style={[styles.count, searchActiveButton == item.id ? { color: '#553241' } : { color: '#A69496' }]}>
+                            {item.count}
+                          </Text>
+                        </TouchableOpacity>
+                      )
 
-              //     }
-              //   </View>
-              // </ScrollView>
+
+                    })
+
+                  }
+                </View>
+              </ScrollView>
             }
+            {/* horizonakan */}
             {searchActive === false &&
-              <FlatList
-                style={{ height: '100%', position: 'relative', borderWidth: 0 }}
-                horizontal={true}
-                showsHorizontalScrollIndicator={false}
-                data={active === false ? data : data1}
-                keyExtractor={(item) => item.id}
-                renderItem={renderItem}
-              />
+              <ScrollView style={{ height: '93%' }} showsHorizontalScrollIndicator={false} horizontal>
+                <View style={{ flexDirection: 'row', height: '100%', position: 'relative', }}>
+                  {
+                    data.map((item, index) => {
+                      return (
+                        <TouchableOpacity
+                          key={index}
+                          style={[{ marginVertical: 6,marginHorizontal: 5.9, width: 41, }, styles.letterParent, searchActiveButton == item.id ? { backgroundColor: 'white' } : { backgroundColor: '#EDEAE4' }]}
+                          onPress={() => {
+                            if (item.id == searchActiveButton) {
+                              setSearchActiveButton(null)
+                            }
+                            else {
+                              setSearchActiveButton(item.id)
+                            }
+                          }}>
+                          <Text style={[styles.letter, searchActiveButton == item.id ? { color: '#553241' } : { color: '#A69496' }]}>
+                            {item.name}
+                          </Text>
+                          <Text style={[styles.count, searchActiveButton == item.id ? { color: '#553241' } : { color: '#A69496' }]}>
+                            {item.count}
+                          </Text>
+                        </TouchableOpacity>
+                      )
+                    })
+                  }
+                </View>
+              </ScrollView>
             }
 
 
@@ -546,12 +561,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   letterParent: {
-    width: 40,
-    height: 52,
+    height: 53,
     borderWidth: 1,
     borderRadius: 8,
-    marginTop: 10,
-    marginHorizontal: 6,
+    // marginTop: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },

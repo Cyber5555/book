@@ -1,10 +1,14 @@
-import React from "react"
+import React, { useState } from "react"
 import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, TextInput, } from "react-native"
+import Eye from "../../../assets/NavIcons/Eye"
 import GoBack from "../../../assets/NavIcons/GoBack"
 import MainButton from "../../../assets/NavIcons/MainButton"
 
 
 export default function Login({ navigation }) {
+
+  const [eyeBool, setEyeBool] = useState(false)
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -28,12 +32,20 @@ export default function Login({ navigation }) {
           keyboardType="email-address"
         />
 
-        <TextInput
-          style={styles.loginInput}
-          placeholder="пароль"
-          secureTextEntry={true}
-          passwordRules={true}
-        />
+
+        <View style={{ position: 'relative' }}>
+          <TextInput
+            style={styles.loginInput}
+            placeholder="пароль"
+            secureTextEntry={!eyeBool}
+            passwordRules={true}
+          />
+          <TouchableOpacity
+            style={styles.eye}
+            onPress={() => setEyeBool(!eyeBool)}>
+            <Eye boolEye={eyeBool} />
+          </TouchableOpacity>
+        </View>
 
         <Text
           style={styles.forgetPasswordText}
@@ -107,6 +119,11 @@ const styles = StyleSheet.create({
   },
   loginButton: {
     marginTop: 32
+  },
+  eye: {
+    position: 'absolute',
+    top: 22,
+    right: 10,
   }
 
 })
