@@ -1,8 +1,10 @@
 import React from "react";
-import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Appearance, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, useColorScheme, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 
 export default function Books() {
+
+
   return (
     <View style={styles.readerBook}>
 
@@ -67,6 +69,10 @@ const styles = StyleSheet.create({
     width: '28%',
     height: '100%',
     borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#553241',
+    backgroundColor: '#553241',
+    overflow: 'hidden',
   },
   viewTitleBig: {
     height: 121,
@@ -74,10 +80,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderWidth: 1,
     borderLeftWidth: 0,
+    borderBottomWidth: 0,
+    borderColor: '#553241',
     marginTop: 4,
     borderBottomEndRadius: 10,
     borderTopEndRadius: 10,
-    //overflow: 'hidden'
+    overflow: 'hidden'
   },
   titleName: {
     width: '100%',
@@ -92,7 +100,8 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     fontSize: 13,
     marginTop: 10,
-    marginLeft: 5
+    marginLeft: 5,
+    color: '#553241',
   },
   progressBar: {
     width: '100%',
@@ -100,8 +109,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#553241',
     borderWidth: 1,
     borderColor: '#553241',
-    borderBottomRightRadius: 20,
-    borderLeftWidth: 0
+    borderLeftWidth: 0,
+
   },
   progressValue: {
     height: '100%',

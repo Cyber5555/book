@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, Image, FlatList } from "react-native";
 import GoBack from '../../assets/NavIcons/GoBack'
 import SearchIcon from '../../assets/NavIcons/SearchIcon'
 import Pisatel from "../BookAndPisatel/Pisatel";
 import Books from "../BookAndPisatel/Books";
 import Svg, { Path } from "react-native-svg";
+import Context from "../AuthContext";
 
-export default function AllBook({ navigation }) {
+
+
+export default function AllBook({ navigation, keyboard }) {
   const data = [
     {
       id: 1,
@@ -272,21 +275,18 @@ export default function AllBook({ navigation }) {
       count: 564
     },
   ]
+ 
+  const value = useContext(Context)
 
   const [active, setActive] = useState(false)
   const [searchActive, setSearchActive] = useState(false)
   const [searchActiveButton, setSearchActiveButton] = useState(null)
 
-  // const RenderItem = ({ item }) => {
-  //   return (
-
-  //   )
-  // }
 
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
+      <View style={[styles.container, value.keyboardOpen === true ? { paddingBottom: 0 } : { paddingBottom: 120 }]}>
 
         <View style={styles.backAndSearch}>
           <TouchableOpacity
@@ -301,6 +301,7 @@ export default function AllBook({ navigation }) {
             style={styles.searchInput}
             keyboardType={'web-search'}
             placeholder="поиск..."
+            placeholderTextColor={'#A69496'}
             returnKeyType="search"
           />
 
@@ -385,7 +386,7 @@ export default function AllBook({ navigation }) {
                       return (
                         <TouchableOpacity
                           key={index}
-                          style={[{ marginVertical: 6,marginHorizontal: 5.9, width: 41, }, styles.letterParent, searchActiveButton == item.id ? { backgroundColor: 'white' } : { backgroundColor: '#EDEAE4' }]}
+                          style={[{ marginVertical: 6, marginHorizontal: 5.9, width: 41, }, styles.letterParent, searchActiveButton == item.id ? { backgroundColor: 'white' } : { backgroundColor: '#EDEAE4' }]}
                           onPress={() => {
                             if (item.id == searchActiveButton) {
                               setSearchActiveButton(null)
@@ -496,7 +497,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FAFAF0',
     paddingHorizontal: 20,
-    paddingBottom: 120
   },
   backAndSearch: {
     marginTop: 13,
@@ -558,7 +558,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    overflow: 'hidden',
   },
   letterParent: {
     height: 53,
@@ -573,9 +574,9 @@ const styles = StyleSheet.create({
     height: 11,
     backgroundColor: '#553241',
     position: 'absolute',
-    bottom: 0,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
+    bottom: -1,
+    // borderBottomLeftRadius: 10,
+    // borderBottomRightRadius: 10,
     justifyContent: 'center',
     alignItems: 'center'
   },

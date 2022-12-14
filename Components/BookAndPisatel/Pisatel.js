@@ -54,10 +54,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderWidth: 1,
     borderLeftWidth: 0,
+    borderBottomWidth: 0,
     marginTop: 4,
     borderBottomEndRadius: 10,
     borderTopEndRadius: 10,
-    //overflow: 'hidden'
+    overflow: 'hidden'
   },
   titleName: {
     fontSize: 15,
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#553241',
     borderWidth: 1,
     borderColor: '#553241',
-    borderBottomRightRadius: 20,
+    // borderBottomRightRadius: 20,
     borderLeftWidth: 0
   },
   progressValue: {
@@ -85,7 +86,8 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
     fontWeight: '400',
     fontSize: 15,
-    marginTop: 17
+    marginTop: 17,
+    color: '#553241'
   }
 
 })

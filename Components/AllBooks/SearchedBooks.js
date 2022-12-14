@@ -51,6 +51,7 @@ export default function SearchedBooks({ navigation }) {
             style={styles.searchInput}
             keyboardType={'web-search'}
             placeholder="поиск..."
+            placeholderTextColor={'#A69496'}
             returnKeyType="search"
           />
 

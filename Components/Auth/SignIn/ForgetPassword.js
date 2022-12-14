@@ -27,6 +27,7 @@ export default function ForgetPassword({ navigation }) {
           style={styles.emailInput}
           placeholder="эл.почта"
           keyboardType="email-address"
+          placeholderTextColor={'#AF9EA0'}
         />
 
         <TouchableOpacity
@@ -66,7 +67,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    fontWeight: "400"
+    fontWeight: "700",
+    color: '#553241'
   },
   //  standarts
 

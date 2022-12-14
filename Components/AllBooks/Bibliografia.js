@@ -69,7 +69,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    fontWeight: "400",
+    fontWeight: "700",
+    color: '#553241'
   },
   //  standarts
 

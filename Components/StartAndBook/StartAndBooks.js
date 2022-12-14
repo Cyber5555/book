@@ -2,7 +2,7 @@ import React from "react";
 import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import Books from "../BookAndPisatel/Books";
-import { AllBooksFunc } from "../TabNavigation/NavigationMenu ";
+import { AllBooksFunc } from "../TabNavigation/NavigationMenu";
 
 
 export default function StartAndBookComponents({ navigation, route }) {

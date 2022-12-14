@@ -29,7 +29,9 @@ export default function Login({ navigation }) {
         <TextInput
           style={styles.loginInput}
           placeholder="эл.почта"
+          placeholderTextColor={'#AF9EA0'}
           keyboardType="email-address"
+          passwordRules={true}
         />
 
 
@@ -37,6 +39,7 @@ export default function Login({ navigation }) {
           <TextInput
             style={styles.loginInput}
             placeholder="пароль"
+            placeholderTextColor={'#AF9EA0'}
             secureTextEntry={!eyeBool}
             passwordRules={true}
           />
@@ -93,7 +96,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    fontWeight: "400"
+    fontWeight: "700",
+    color: '#553241'
   },
   //  standarts
 

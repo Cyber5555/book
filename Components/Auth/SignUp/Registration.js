@@ -1,10 +1,16 @@
-import React from "react"
+import React, { useState } from "react"
 import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, TextInput, } from "react-native"
+import Eye from "../../../assets/NavIcons/Eye"
 import GoBack from "../../../assets/NavIcons/GoBack"
 import MainButton from "../../../assets/NavIcons/MainButton"
 
 
 export default function Registration({ navigation }) {
+
+  const [eyePassword, setEyePassword] = useState(false)
+  const [eyeConfirmPassword, setEyeConfirmPassword] = useState(false)
+
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -24,28 +30,50 @@ export default function Registration({ navigation }) {
         <TextInput
           style={styles.inputs}
           placeholder="имя"
+          placeholderTextColor={'#AF9EA0'}
         />
 
 
         <TextInput
           style={styles.inputs}
           placeholder="эл.почта"
+          placeholderTextColor={'#AF9EA0'}
           keyboardType="email-address"
         />
 
-        <TextInput
-          style={styles.inputs}
-          placeholder="пароль"
-          secureTextEntry={true}
-          passwordRules={true}
-        />
+        <View style={{ position: 'relative' }}>
+          <TextInput
+            style={styles.inputs}
+            placeholder="новый пароль"
+            placeholderTextColor={'#AF9EA0'}
+            passwordRules={true}
+            secureTextEntry={!eyePassword}
+          />
+          <TouchableOpacity
+            style={styles.eye}
+            onPress={() => {
+              setEyePassword(!eyePassword)
+            }}>
+            <Eye boolEye={eyePassword} />
+          </TouchableOpacity>
+        </View>
 
-        <TextInput
-          style={styles.inputs}
-          placeholder="повтор пароля"
-          secureTextEntry={true}
-          passwordRules={true}
-        />
+        <View style={{ position: 'relative' }}>
+          <TextInput
+            style={styles.inputs}
+            placeholder="повторите пароль"
+            placeholderTextColor={'#AF9EA0'}
+            passwordRules={true}
+            secureTextEntry={!eyeConfirmPassword}
+          />
+          <TouchableOpacity
+            style={styles.eye}
+            onPress={() => {
+              setEyeConfirmPassword(!eyeConfirmPassword)
+            }}>
+            <Eye boolEye={eyeConfirmPassword} />
+          </TouchableOpacity>
+        </View>
 
 
 
@@ -86,7 +114,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    fontWeight: "400"
+    fontWeight: "700",
+    color: '#553241'
   },
   //  standarts
 
@@ -102,7 +131,12 @@ const styles = StyleSheet.create({
   },
   regButt: {
     marginTop: 60,
-    
+
+  },
+  eye: {
+    position: 'absolute',
+    top: 22,
+    right: 10,
   }
 
 })

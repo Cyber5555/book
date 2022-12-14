@@ -26,6 +26,7 @@ export default function ForgetPasswordCode({ navigation }) {
         <TextInput
           style={styles.emailInput}
           placeholder="код подтверждения"
+          placeholderTextColor={'#AF9EA0'}
           maxLength={4}
           keyboardType="number-pad"
         />
@@ -67,7 +68,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    fontWeight: "400"
+    fontWeight: "700",
+    color: '#553241'
   },
   //  standarts
 

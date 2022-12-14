@@ -54,9 +54,7 @@ export default function BookPage({ navigation }) {
 
 
         <View style={styles.progressParent}>
-          <View style={styles.progressValue}>
-
-          </View>
+          <View style={styles.progressValue}></View>
           <Text style={styles.progressPercent}>37%</Text>
         </View>
 
@@ -98,6 +96,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "700",
     paddingTop: 3,
+    color: "#553241"
   },
   //  standarts
 
@@ -137,20 +136,22 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 1,
     borderColor: '#553241',
-    position: 'relative'
+    position: 'relative',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   progressValue: {
-    width: '50%',
+    width: '40%',
     height: '100%',
     backgroundColor: '#48BF85',
-    borderRadius: 5
+    borderRadius: 5,
+    position: 'absolute',
+    left: 0
   },
   progressPercent: {
     color: '#FFFFFF',
     fontWeight: "400",
     fontSize: 12,
-    position: 'absolute',
-    left: '47.5%'
   },
   blueViewPisatel: {
     textAlign: 'center',

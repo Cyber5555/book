@@ -24,6 +24,7 @@ export default function FeedBack({ navigation }) {
         <TextInput
           style={styles.name}
           placeholder="имя"
+          placeholderTextColor={'#AF9EA0'}
         />
 
         <View style={styles.feedBackParent}>
@@ -69,7 +70,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    fontWeight: "400"
+    fontWeight: "700",
+    color: '#553241'
   },
   // standarts
 
@@ -97,6 +99,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 182,
     paddingHorizontal: 20,
+    color: '#553241'
   },
   sendButton: {
     width: '100%',

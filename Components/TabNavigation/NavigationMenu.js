@@ -25,22 +25,68 @@ import PisatelSinglPage from '../AllBooks/PisatelSinglPage';
 import BookPage from '../AllBooks/BookPage';
 import Biblografia from '../AllBooks/Bibliografia';
 import ReaderScreen from '../ReaderFolder/ReaderScreen';
+import { Keyboard, View } from 'react-native';
+import Context from '../AuthContext';
+
 
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 export default function NavigationMenuComponent({ navigation, route }) {
+
+
+  let value = React.useContext(Context)
+
+  // if (navigation.name == 'NavigationMenu') {
+  //   console.log(navigation.name);
+  // }
+
+
+
+  useEffect(() => {
+    let keyboardDidShowListener
+    let keyboardDidHideListener
+    if (value.keyboardOpen === false) {
+
+      keyboardDidHideListener = Keyboard.addListener(
+        'keyboardDidHide',
+        _keyboardDidHide,
+      );
+      keyboardDidShowListener = Keyboard.addListener(
+        'keyboardDidShow',
+        _keyboardDidShow,
+      );
+    }
+
+    return function () {
+      keyboardDidShowListener.remove();
+      keyboardDidHideListener.remove();
+    }
+
+
+  }, [])
+
+  const _keyboardDidShow = (event) => {
+
+    value.setKeyboardOpen(true)
+
+  }
+
+  const _keyboardDidHide = (event) => {
+    value.setKeyboardOpen(false)
+
+  }
   return (
     <Tab.Navigator
       initialRouteName='StartAndBookFunk'
       screenOptions={{
         tabBarShowLabel: false,
         headerShown: false,
-        // tabBarHideOnKeyboard: true,
+        tabBarHideOnKeyboard: true,
         tabBarStyle: {
           position: 'absolute',
-          bottom: 25,
+          bottom: value.keyboardOpen ? -120 : 25,
           left: '18.5%',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -54,7 +100,7 @@ export default function NavigationMenuComponent({ navigation, route }) {
       }}>
       <Tab.Screen
         name="AllBooksFunc"
-        component={AllBooksFunc || BookPageFunc}
+        component={AllBooksFunc}
         options={{
           tabBarIcon: ({ focused }) => {
             return (
@@ -226,13 +272,7 @@ export const AllBooksFunc = ({ navigation }) => {
           headerShown: false,
         }}
       />
-      {/* <Stack.Screen
-        name="AllBook"
-        component={AllBook}
-        options={{
-          headerShown: false,
-        }}
-      /> */}
+
       <Stack.Screen
         name="SearchedBooks"
         component={SearchedBooks}
@@ -275,7 +315,6 @@ const BookPageFunc = ({ focused }) => {
           headerShown: false,
         }}
       />
-      {/* <AllBooksIcon focused={focused}/> */}
     </Stack.Navigator>
   );
 };
