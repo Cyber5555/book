@@ -112,20 +112,22 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 1,
     borderColor: '#553241',
-    position: 'relative'
+    position: 'relative',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   progressValue: {
     width: '50%',
     height: '100%',
     backgroundColor: '#48BF85',
-    borderRadius: 5
+    borderRadius: 5,
+    position: 'absolute',
+    left: 0
   },
   progressPercent: {
     color: '#FFFFFF',
     fontWeight: "400",
     fontSize: 12,
-    position: 'absolute',
-    left: '47.5%'
   }
 
 })
