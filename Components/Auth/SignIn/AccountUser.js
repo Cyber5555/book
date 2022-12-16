@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 170,
     paddingHorizontal: 20,
+    color: '#553241'
   },
   sendButton: {
     width: '100%',

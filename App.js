@@ -24,10 +24,10 @@ const Stack = createStackNavigator();
 
 export default function App() {
 
-  
+
   const [keyboardOpen, setKeyboardOpen] = useState(false)
 
-  
+
   let value = {
     keyboardOpen, setKeyboardOpen
   }

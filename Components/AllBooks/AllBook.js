@@ -9,7 +9,7 @@ import Context from "../AuthContext";
 
 
 
-export default function AllBook({ navigation, keyboard }) {
+export default function AllBook({ navigation }) {
   const data = [
     {
       id: 1,
@@ -275,7 +275,7 @@ export default function AllBook({ navigation, keyboard }) {
       count: 564
     },
   ]
- 
+
   const value = useContext(Context)
 
   const [active, setActive] = useState(false)
@@ -300,8 +300,8 @@ export default function AllBook({ navigation, keyboard }) {
           <TextInput
             style={styles.searchInput}
             keyboardType={'web-search'}
-            placeholder="поиск..."
             placeholderTextColor={'#A69496'}
+            placeholder="поиск..."
             returnKeyType="search"
           />
 
@@ -317,7 +317,7 @@ export default function AllBook({ navigation, keyboard }) {
         <View style={styles.searchNameAuthorCountParent}>
 
           <TouchableOpacity
-            style={[styles.searchNameAuthorCount, active === false ? { backgroundColor: '#FFFFFF', borderBottomWidth: 0 } : { backgroundColor: '#EDEAE4', borderBottomWidth: 1 }]}
+            style={[styles.searchNameAuthorCount, active === false ? { backgroundColor: '#FFFFFF', borderBottomWidth: 0, borderColor: '#553241' } : { backgroundColor: '#EDEAE4', borderBottomWidth: 1, borderBottomColor: '#553241' }]}
             onPress={() => {
               setActive(false)
             }}>
@@ -326,10 +326,10 @@ export default function AllBook({ navigation, keyboard }) {
 
           </TouchableOpacity>
 
-          <View style={{ width: '4%', borderBottomWidth: 1, borderColor: '#A69496', height: 44 }}></View>
+          <View style={{ width: '4%', borderBottomWidth: 1, borderColor: '#553241', height: 44 }}></View>
 
           <TouchableOpacity
-            style={[styles.searchNameAuthorCount, active === true ? { backgroundColor: '#FFFFFF', borderBottomWidth: 0 } : { backgroundColor: '#EDEAE4', borderBottomWidth: 1 }]}
+            style={[styles.searchNameAuthorCount, active === true ? { backgroundColor: '#FFFFFF', borderBottomWidth: 0, borderColor: '#553241' } : { backgroundColor: '#EDEAE4', borderBottomWidth: 1,borderBottomColor: '#553241' }]}
             onPress={() => {
               setActive(true)
             }}>
@@ -342,7 +342,6 @@ export default function AllBook({ navigation, keyboard }) {
 
 
           <View style={[styles.letterSearch, searchActive === true ? { height: 212 } : { height: 83 }]}>
-            {/* uxahayac */}
             {
               searchActive === true &&
               <ScrollView style={{ height: '93%', }} showsVerticalScrollIndicator={false}>
@@ -352,7 +351,7 @@ export default function AllBook({ navigation, keyboard }) {
                       return (
                         <TouchableOpacity
                           key={index}
-                          style={[styles.letterParent, { margin: '1.8%', width: '13%', }, searchActiveButton == item.id ? { backgroundColor: 'white' } : { backgroundColor: '#EDEAE4' }]}
+                          style={[styles.letterParent, { margin: '1.8%', width: '13%', }, searchActiveButton == item.id ? { backgroundColor: 'white', borderColor: '#553241' } : { backgroundColor: '#EDEAE4', borderColor: '#AF9EA0' }]}
                           onPress={() => {
                             if (item.id == searchActiveButton) {
                               setSearchActiveButton(null)
@@ -386,7 +385,7 @@ export default function AllBook({ navigation, keyboard }) {
                       return (
                         <TouchableOpacity
                           key={index}
-                          style={[{ marginVertical: 6, marginHorizontal: 5.9, width: 41, }, styles.letterParent, searchActiveButton == item.id ? { backgroundColor: 'white' } : { backgroundColor: '#EDEAE4' }]}
+                          style={[{ marginVertical: 6, marginHorizontal: 5.9, width: 41, }, styles.letterParent, searchActiveButton == item.id ? { backgroundColor: 'white', borderColor: '#553241' } : { backgroundColor: '#EDEAE4', borderColor: '#AF9EA0' }]}
                           onPress={() => {
                             if (item.id == searchActiveButton) {
                               setSearchActiveButton(null)
@@ -518,6 +517,7 @@ const styles = StyleSheet.create({
     paddingLeft: 14,
     backgroundColor: '#EDEAE4',
     fontSize: 15,
+    color: '#553241'
   },
   searchIcon: {
     position: 'absolute',
@@ -554,7 +554,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderTopWidth: 0,
     width: '100%',
-    borderColor: '#A69496',
+    borderColor: '#553241',
     backgroundColor: '#FFFFFF',
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,

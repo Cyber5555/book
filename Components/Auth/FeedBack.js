@@ -85,7 +85,8 @@ const styles = StyleSheet.create({
     borderColor: '#AF9EA0',
     marginTop: 32,
     paddingLeft: 20,
-    fontSize: 15
+    fontSize: 15,
+    color: '#553241'
   },
   feedBackParent: {
     width: '100%',

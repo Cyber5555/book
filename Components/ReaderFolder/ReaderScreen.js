@@ -1,13 +1,42 @@
-import React, { useEffect, useRef, useState } from "react";
-import { ActivityIndicator, Animated, Easing, SafeAreaView, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from "react-native";
-import { Reader, ReaderProvider, useReader, FontSize } from '@epubjs-react-native/core';
-import { useFileSystem, getCurrentLocation } from '@epubjs-react-native/file-system';
+import React, { useEffect, useState } from "react";
+import {
+  useWindowDimensions,
+  ActivityIndicator,
+  TouchableOpacity,
+  SafeAreaView,
+  StyleSheet,
+  TextInput,
+  Keyboard,
+  View,
+  Text,
+} from "react-native";
+
+import {
+  ReaderProvider,
+  useReader,
+  Reader,
+  FontSize
+} from '@epubjs-react-native/core';
+
+import {
+  getCurrentLocation,
+  useFileSystem,
+} from '@epubjs-react-native/file-system';
+
 import { Slider } from '@miblanchard/react-native-slider';
 import MenuIcon from "../../assets/ReaderIcons/Menu";
 import LightIcon from "../../assets/ReaderIcons/Light";
 import GoMenuIcon from "../../assets/ReaderIcons/GoMenu";
 import FontSizeIcon from "../../assets/ReaderIcons/FontSize";
 import SearchIcon from "../../assets/ReaderIcons/Search";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
+
+
+// let keys = Dimensions.get("Keyboard").height
+
+
+// console.log(keys);
 
 export default function ReaderScreen({ navigation }) {
   const { changeFontSize, goToLocation, changeTheme, getCurrentLocation } = useReader();
@@ -38,17 +67,36 @@ export default function ReaderScreen({ navigation }) {
     <SearchIcon />
   ]
 
+  const [keyboardOpen, setKeyboardOpen] = useState(false)
+
+  useEffect(() => {
+
+    const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
+      setKeyboardOpen(true)
+    });
+    const hideSubscription = Keyboard.addListener("keyboardDidHide", () => {
+      setKeyboardOpen(false)
+    });
+
+    return () => {
+      showSubscription.remove();
+      hideSubscription.remove();
+    };
+
+  }, [])
 
   const getBooleanMenu = async (index) => {
     await setBoolean(index)
     if (index === boolean) {
       await setBoolean(null)
     }
-
   }
 
+
+
+
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <KeyboardAwareScrollView scrollEnabled={false} style={styles.safeArea}>
       <View style={styles.container}>
         <ReaderProvider>
           <TouchableOpacity style={styles.customStyleButton} onPress={() => {
@@ -68,87 +116,104 @@ export default function ReaderScreen({ navigation }) {
           />
 
 
-          <View style={[styles.bottomBar, barOpen ? { height: openValue } : { height: closeValue }]}>
+        </ReaderProvider>
+        <View style={[styles.bottomBar, barOpen ? { height: openValue } : { height: closeValue }]}>
 
-            {
-              boolean === 0 &&
-              <View style={styles.infoMenu}>
-                <Text style={styles.glavaText}>Глава 1.Почледний звонок</Text>
-                <View style={styles.horizontalLine}></View>
-                <Text style={styles.glavaText}>Примечания</Text>
-              </View>
-            }
-            {
-              boolean === 1 &&
-              <View style={styles.lightMenu}>
-                <Slider
-                  value={range}
-                  thumbStyle={styles.thumbStyle}
-                  trackStyle={{ height: 4 }}
-                  minimumTrackTintColor={'#48BF85'}
-                  maximumTrackTintColor={'#553241'}
-                  onValueChange={value => setRange(range)}
-                />
-              </View>
-            }
-            {
-              boolean === 3 &&
-              <View style={styles.fontSizeParent}>
-                <Text style={styles.fontSize}>А</Text>
-                <View style={styles.verticalLine}></View>
-                <Text style={styles.fontSize}>а</Text>
-
-              </View>
-            }
-            {
-              barOpen &&
-              <View style={styles.buttonsParent}>
-                {
-                  count.map((item, index) => (
-                    <TouchableOpacity
-                      style={[styles.buttons, boolean === index ? { backgroundColor: '#FFFFFF' } : { backgroundColor: '#EDEAE4' }]}
-                      key={index}
-                      onPress={() => {
-                        if (index === 2) {
-                          navigation.navigate('StartAndBook')
-                        } else {
-                          getBooleanMenu(index)
-                        }
-                      }}>
-                      {item}
-                    </TouchableOpacity>
-                  ))
-                }
-              </View>
-            }
-            {
-              barOpen &&
+          {
+            boolean === 0 &&
+            <View style={styles.infoMenu}>
+              <Text style={styles.glavaText}>Глава 1.Почледний звонок</Text>
+              <View style={styles.horizontalLine}></View>
+              <Text style={styles.glavaText}>Примечания</Text>
+            </View>
+          }
+          {
+            boolean === 1 &&
+            <View style={styles.lightMenu}>
               <Slider
                 value={range}
-                containerStyle={{ width: '95%', alignSelf: 'center' }}
                 thumbStyle={styles.thumbStyle}
                 trackStyle={{ height: 4 }}
                 minimumTrackTintColor={'#48BF85'}
                 maximumTrackTintColor={'#553241'}
                 onValueChange={value => setRange(range)}
               />
-            }
-            <View style={styles.infoBar}>
-              <View>
-                <Text style={styles.leftCount}>15/430</Text>
-                <Text style={styles.leftCount}>58.5%</Text>
-              </View>
-              <View>
-                <Text style={styles.centerText}>Северное сияние</Text>
-                <Text style={styles.centerText}>Глава 1.Последний звонок</Text>
-              </View>
-              <Text style={styles.rightTime}>20:00</Text>
+            </View>
+          }
+          {
+            boolean === 3 &&
+            <View style={styles.fontSizeParent}>
+
+              <TouchableOpacity style={[styles.fontSizeButton, { borderRightWidth: .5 }]}>
+                <Text style={styles.fontSize}>А</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={[styles.fontSizeButton, { borderLeftWidth: .5 }]}>
+                <Text style={styles.fontSize}>а</Text>
+              </TouchableOpacity>
 
             </View>
+          }
+          {
+            boolean === 4 &&
+            <View style={styles.searchBox}>
+              <TextInput
+                style={styles.searchInput}
+                placeholder="поиск"
+                placeholderTextColor={'#553241'}
+                autoFocus={true}
+              />
+
+            </View>
+          }
+          {
+            barOpen &&
+            <View style={styles.buttonsParent}>
+              {
+                count.map((item, index) => (
+                  <TouchableOpacity
+                    style={[styles.buttons, boolean === index ? { backgroundColor: '#FFFFFF' } : { backgroundColor: '#EDEAE4' }]}
+                    key={index}
+                    onPress={() => {
+                      if (index === 2) {
+                        navigation.navigate('StartAndBook')
+                      } else {
+                        getBooleanMenu(index)
+                      }
+                    }}>
+                    {item}
+                  </TouchableOpacity>
+                ))
+              }
+            </View>
+          }
+          {
+            barOpen &&
+            <Slider
+              value={range}
+              containerStyle={{ width: '95%', alignSelf: 'center' }}
+              thumbStyle={styles.thumbStyle}
+              trackStyle={{ height: 4 }}
+              minimumTrackTintColor={'#48BF85'}
+              maximumTrackTintColor={'#553241'}
+              onValueChange={value => setRange(range)}
+            />
+          }
+          <View style={styles.infoBar}>
+            <View>
+              <Text style={styles.leftCount}>15/430</Text>
+              <Text style={styles.leftCount}>58.5%</Text>
+            </View>
+            <View>
+              <Text style={styles.centerText}>Северное сияние</Text>
+              <Text style={styles.centerText}>Глава 1.Последний звонок</Text>
+            </View>
+            <Text style={styles.rightTime}>20:00</Text>
+
           </View>
-        </ReaderProvider>
+        </View>
       </View >
-    </SafeAreaView >
+    </KeyboardAwareScrollView>
   )
 }
 
@@ -160,7 +225,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    justifyContent: 'space-between'
+    // justifyContent: 'space-between'
   },
   team: {
     color: 'white',
@@ -291,9 +356,25 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: '#553241',
   },
-  verticalLine: {
+  fontSizeButton: {
+    width: '50%',
     height: '100%',
-    borderRightWidth: 1,
     borderStyle: 'dashed',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  searchBox: {
+    width: '100%',
+    height: 40,
+    borderWidth: 1,
+    position: 'absolute',
+    top: -40,
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
+    backgroundColor: '#FFFFFF',
+  },
+  searchInput: {
+    color: '#553241',
+    textAlign: 'center',
   }
 })

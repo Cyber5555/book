@@ -1,5 +1,5 @@
 import React from "react"
-import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, TextInput, Image, } from "react-native"
+import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, Image, } from "react-native"
 import LinearGradient from "react-native-linear-gradient"
 import Counter from "../../assets/NavIcons/Counter"
 import GoBack from "../../assets/NavIcons/GoBack"

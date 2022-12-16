@@ -119,7 +119,8 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingLeft: 20,
     marginTop: 15,
-    fontSize: 15
+    fontSize: 15,
+    color: '#553241'
   },
   pageInfo: {
     fontSize: 14,

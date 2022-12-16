@@ -29,6 +29,7 @@
     "react-native-gesture-handler": "^2.8.0",
     "react-native-gradle-plugin": "^0.72.0",
     "react-native-inset-shadow": "^1.0.3",
+    "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-linear-gradient": "^2.6.2",
     "react-native-link": "^4.1.0",
     "react-native-neomorph-shadows": "^1.1.2",

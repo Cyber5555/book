@@ -42,41 +42,23 @@ export default function NavigationMenuComponent({ navigation, route }) {
   //   console.log(navigation.name);
   // }
 
-
-
   useEffect(() => {
-    let keyboardDidShowListener
-    let keyboardDidHideListener
-    if (value.keyboardOpen === false) {
+    // AllBooksFunc
+    const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
+      value.setKeyboardOpen(true)
+    });
+    const hideSubscription = Keyboard.addListener("keyboardDidHide", () => {
+      value.setKeyboardOpen(false)
+    });
 
-      keyboardDidHideListener = Keyboard.addListener(
-        'keyboardDidHide',
-        _keyboardDidHide,
-      );
-      keyboardDidShowListener = Keyboard.addListener(
-        'keyboardDidShow',
-        _keyboardDidShow,
-      );
-    }
-
-    return function () {
-      keyboardDidShowListener.remove();
-      keyboardDidHideListener.remove();
-    }
-
+    return () => {
+      showSubscription.remove();
+      hideSubscription.remove();
+    };
 
   }, [])
 
-  const _keyboardDidShow = (event) => {
 
-    value.setKeyboardOpen(true)
-
-  }
-
-  const _keyboardDidHide = (event) => {
-    value.setKeyboardOpen(false)
-
-  }
   return (
     <Tab.Navigator
       initialRouteName='StartAndBookFunk'
@@ -87,15 +69,14 @@ export default function NavigationMenuComponent({ navigation, route }) {
         tabBarStyle: {
           position: 'absolute',
           bottom: value.keyboardOpen ? -120 : 25,
-          left: '18.5%',
-          alignItems: 'center',
-          justifyContent: 'space-between',
+          left: '15%',
           elevation: 0,
           backgroundColor: '#EDEAE4',
           borderTopWidth: 0,
           height: 70,
-          width: '65%',
+          width: '70%',
           borderRadius: 50,
+          borderColor: '#EDEAE4'
         },
       }}>
       <Tab.Screen
@@ -237,13 +218,13 @@ const StartAndBookFunk = () => {
           headerShown: false,
         }}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="BookPageFunc"
         component={BookPageFunc}
         options={{
           headerShown: false,
         }}
-      />
+      /> */}
     </Stack.Navigator>
   );
 };

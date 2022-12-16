@@ -90,7 +90,8 @@ const styles = StyleSheet.create({
     height: 40,
     width: '100%',
     paddingLeft: 20,
-    marginTop: 30
+    marginTop: 30,
+    color: '#553241'
   },
   regButt: {
     marginTop: 50

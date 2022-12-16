@@ -80,7 +80,8 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingLeft: 20,
     marginTop: 30,
-    fontSize: 15
+    fontSize: 15,
+    color: '#553241'
   },
   loginButton: {
     marginTop: 32

@@ -103,7 +103,7 @@ export const AllBooksIcon = ({ focused }) => {
       </Svg>
     </View>
     :
-    <View>
+    <View style={{alignSelf: 'flex-start', marginLeft: 8}}>
       <Svg
         width={54}
         height={54}
@@ -167,7 +167,7 @@ export const BookIcon = ({ focused }) => {
       </Svg>
     </View>
     :
-    <View>
+    <View style={{ marginHorizontal: '20%' }}>
       <Svg
         width={54}
         height={54}
@@ -244,7 +244,7 @@ export const ProfileIcon = ({ focused }) => {
       </Svg>
     </View>
     :
-    <View>
+    <View style={{alignSelf: 'flex-end', marginRight: 8}}>
       <Svg
         width={54}
         height={54}
@@ -279,7 +279,7 @@ const styles = StyleSheet.create({
     width: 105,
     height: 105,
     backgroundColor: '#EDEAE4',
-    borderRadius: 50
+    borderRadius: 50,
   }
 })
 

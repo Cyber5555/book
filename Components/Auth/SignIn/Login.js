@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     marginTop: 15,
     fontSize: 15,
-    // lineHeight: 25.87
+    color: '#553241'
   },
   forgetPasswordText: {
     fontSize: 15,

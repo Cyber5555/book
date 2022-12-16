@@ -1,5 +1,5 @@
 import React from "react"
-import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, TextInput, Image, } from "react-native"
+import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, Image, } from "react-native"
 import Counter from "../../assets/NavIcons/Counter"
 import GoBack from "../../assets/NavIcons/GoBack"
 
@@ -121,8 +121,8 @@ const styles = StyleSheet.create({
     height: '100%',
     backgroundColor: '#48BF85',
     borderRadius: 5,
+    alignSelf: 'flex-start',
     position: 'absolute',
-    left: 0
   },
   progressPercent: {
     color: '#FFFFFF',

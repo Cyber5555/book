@@ -81,7 +81,8 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingLeft: 20,
     marginTop: 49,
-    fontSize: 15
+    fontSize: 15,
+    color: '#553241'
   },
   confirmButton: {
     marginTop: 50

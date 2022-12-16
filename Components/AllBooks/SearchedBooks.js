@@ -64,8 +64,8 @@ export default function SearchedBooks({ navigation }) {
           <TouchableOpacity
             style={[styles.searchNameAuthorCount,
             active === false ?
-              { backgroundColor: '#FFFFFF' }
-              : { backgroundColor: '#EDEAE4' }]}
+              { backgroundColor: '#FFFFFF', borderColor: '#553241' }
+              : { backgroundColor: '#EDEAE4', borderColor: '#A69496' }]}
             onPress={() => {
               setActive(false)
             }}>
@@ -86,8 +86,8 @@ export default function SearchedBooks({ navigation }) {
 
           <TouchableOpacity style={[styles.searchNameAuthorCount,
           active === true ?
-            { backgroundColor: '#FFFFFF' }
-            : { backgroundColor: '#EDEAE4' }]}
+            { backgroundColor: '#FFFFFF', borderColor: '#553241' }
+            : { backgroundColor: '#EDEAE4', borderColor: '#A69496' }]}
             onPress={() => {
               setActive(true)
             }}>
@@ -107,13 +107,25 @@ export default function SearchedBooks({ navigation }) {
           active === false ?
             <FlatList
               data={data}
-              renderItem={Books}
+              renderItem={() => (
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('BookPageFunc')}
+                >
+                  {<Books />}
+                </TouchableOpacity>
+              )}
               showsVerticalScrollIndicator={false}
             />
             :
             <FlatList
               data={data}
-              renderItem={Pisatel}
+              renderItem={() => (
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Pisatel')}
+                >
+                  {<Pisatel />}
+                </TouchableOpacity>
+              )}
               showsVerticalScrollIndicator={false}
             />
         }
@@ -155,6 +167,7 @@ const styles = StyleSheet.create({
     paddingLeft: 14,
     backgroundColor: '#EDEAE4',
     fontSize: 15,
+    color: '#553241'
   },
   searchIcon: {
     position: 'absolute',
