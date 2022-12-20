@@ -109,7 +109,7 @@ export default function SearchedBooks({ navigation }) {
               data={data}
               renderItem={() => (
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('BookPageFunc')}
+                  onPress={() => navigation.navigate('BookPage')}
                 >
                   {<Books />}
                 </TouchableOpacity>

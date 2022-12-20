@@ -59,6 +59,10 @@ export default function NavigationMenuComponent({ navigation, route }) {
   }, [])
 
 
+
+
+
+  
   return (
     <Tab.Navigator
       initialRouteName='StartAndBookFunk'
@@ -218,21 +222,11 @@ const StartAndBookFunk = () => {
           headerShown: false,
         }}
       />
-      {/* <Stack.Screen
-        name="BookPageFunc"
-        component={BookPageFunc}
-        options={{
-          headerShown: false,
-        }}
-      /> */}
     </Stack.Navigator>
   );
 };
 
-export const AllBooksFunc = ({ navigation }) => {
-  // const routes = navigation.getState()?.routes;
-  // prevRoute = routes[routes.length - 2];
-  // console.log(prevRoute);
+export const AllBooksFunc = () => {
   return (
     <Stack.Navigator
       initialRouteName='AllBooks'
@@ -247,8 +241,8 @@ export const AllBooksFunc = ({ navigation }) => {
         }}
       />
       <Stack.Screen
-        name="BookPageFunc"
-        component={BookPageFunc}
+        name="BookPage"
+        component={BookPage}
         options={{
           headerShown: false,
         }}
@@ -280,22 +274,3 @@ export const AllBooksFunc = ({ navigation }) => {
 };
 
 
-
-
-const BookPageFunc = ({ focused }) => {
-  return (
-    <Stack.Navigator
-      initialRouteName='BookPage'
-      screenOptions={({ route }) => ({
-        tabBarShowLabel: false,
-      })}>
-      <Stack.Screen
-        name="BookPage"
-        component={BookPage}
-        options={{
-          headerShown: false,
-        }}
-      />
-    </Stack.Navigator>
-  );
-};

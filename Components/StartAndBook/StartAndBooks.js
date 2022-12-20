@@ -1,6 +1,7 @@
 import React from "react";
 import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
+import AllBook from "../AllBooks/AllBook";
 import Books from "../BookAndPisatel/Books";
 import { AllBooksFunc } from "../TabNavigation/NavigationMenu";
 
@@ -44,7 +45,10 @@ export default function StartAndBookComponents({ navigation, route }) {
               <TouchableOpacity
                 key={item.index}
                 onPress={() => {
-                  navigation.navigate('BookPageFunc')
+                  navigation.navigate('AllBooksFunc', {
+                    screen: 'BookPage',
+                    initial: false,
+                  })
                 }}>
                 <Books />
               </TouchableOpacity>

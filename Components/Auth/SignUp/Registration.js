@@ -3,6 +3,7 @@ import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, TextInput, } fr
 import Eye from "../../../assets/NavIcons/Eye"
 import GoBack from "../../../assets/NavIcons/GoBack"
 import MainButton from "../../../assets/NavIcons/MainButton"
+import { resetCode } from "../../redux/action/signUpAction"
 
 
 export default function Registration({ navigation }) {
@@ -80,7 +81,14 @@ export default function Registration({ navigation }) {
         <TouchableOpacity
           style={styles.regButt}
           onPress={() => {
-            navigation.navigate('ConfirmRegister')
+            // navigation.navigate('ConfirmRegister')
+            let formdata = new FormData();
+            formdata.append("name", "gag");
+            formdata.append("email", "lagasdalskd@gmail.com");
+            formdata.append("password", "11111111");
+            formdata.append("password_confirmation", "11111111");
+
+            resetCode(formdata.name, formdata.email, formdata.password, formdata.password_confirmation)
           }}>
           <MainButton text={'зарегистрироваться'} />
         </TouchableOpacity>

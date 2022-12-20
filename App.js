@@ -2,19 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { StatusBar, Text, useColorScheme } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from 'recoil';
 import NavigationMenuComponent from './Components/TabNavigation/NavigationMenu';
 import ReaderScreen from './Components/ReaderFolder/ReaderScreen';
 import { Appearance } from 'react-native';
 import Context from './Components/AuthContext';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
+import { applyMiddleware, createStore } from 'redux';
+import myReducer from './Components/redux/reducer/myReducer';
 
 
+const myStore = createStore(
+  myReducer,
+  applyMiddleware(thunk)
+);
 
 const Stack = createStackNavigator();
 
@@ -34,7 +35,7 @@ export default function App() {
 
 
   return (
-    <RecoilRoot>
+    <Provider store={myStore}>
       <NavigationContainer>
         <Context.Provider value={value}>
           <StatusBar
@@ -68,6 +69,6 @@ export default function App() {
           </Stack.Navigator>
         </Context.Provider>
       </NavigationContainer>
-    </RecoilRoot>
+    </Provider>
   );
 }

@@ -30,33 +30,23 @@ import GoMenuIcon from "../../assets/ReaderIcons/GoMenu";
 import FontSizeIcon from "../../assets/ReaderIcons/FontSize";
 import SearchIcon from "../../assets/ReaderIcons/Search";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import DeviceBrightness from '@adrianso/react-native-device-brightness';
 
 
-
-// let keys = Dimensions.get("Keyboard").height
-
-
-// console.log(keys);
 
 export default function ReaderScreen({ navigation }) {
-  const { changeFontSize, goToLocation, changeTheme, getCurrentLocation } = useReader();
+  const { goToLocation, getCurrentLocation, } = useReader();
   const { width, height } = useWindowDimensions();
   const [barOpen, setBarOpen] = useState(false)
   const [range, setRange] = useState(false)
-
+  const [currentLocation, setCurrentLocation] = useState(null)
   const [boolean, setBoolean] = useState(null)
 
   let openValue = 138
   let closeValue = 40
 
 
-  const LoadingComponent = () => {
-    return (
-      <View>
-        <ActivityIndicator size={150} color="blue" />
-      </View>
-    );
-  }
+
 
 
   let count = [
@@ -68,8 +58,13 @@ export default function ReaderScreen({ navigation }) {
   ]
 
   const [keyboardOpen, setKeyboardOpen] = useState(false)
+  let [brightness, setBrightness] = useState(0.2);
+
+
+
 
   useEffect(() => {
+    DeviceBrightness.setBrightnessLevel(brightness);
 
     const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
       setKeyboardOpen(true)
@@ -94,25 +89,31 @@ export default function ReaderScreen({ navigation }) {
 
 
 
-
+  console.log(currentLocation);
   return (
     <KeyboardAwareScrollView scrollEnabled={false} style={styles.safeArea}>
       <View style={styles.container}>
         <ReaderProvider>
-          <TouchableOpacity style={styles.customStyleButton} onPress={() => {
-            setBarOpen(!barOpen)
-            setBoolean(null)
-          }}></TouchableOpacity>
           <Reader
             src="https://s3.amazonaws.com/moby-dick/OPS/package.opf"
             width={width}
             height={barOpen ? height - openValue : height - closeValue}
             fileSystem={useFileSystem}
-            onLocationChange={() => { getCurrentLocation }}
-            initialLocation={1}
-            renderLoadingFileComponent={LoadingComponent}
+            // onLocationsReady={(e) => {
+            //   console.log(e)
+
+            // }}
+            onLocationChange={(evn) => {
+              console.log(evn);
+            }}
+            initialLocation={823}
+            // initialLocations={5}
             enableSelection={true}
-          // FontSize={console.log(changeFontSize)}
+            onPress={() => {
+              setBarOpen(!barOpen)
+              setBoolean(null)
+            }}
+            onSwipeLeft={() => { }}
           />
 
 
@@ -131,12 +132,18 @@ export default function ReaderScreen({ navigation }) {
             boolean === 1 &&
             <View style={styles.lightMenu}>
               <Slider
-                value={range}
                 thumbStyle={styles.thumbStyle}
                 trackStyle={{ height: 4 }}
                 minimumTrackTintColor={'#48BF85'}
                 maximumTrackTintColor={'#553241'}
-                onValueChange={value => setRange(range)}
+                maximumValue={1}
+                minimumValue={0}
+                step={0.1}
+                value={brightness}
+                onValueChange={async (bright) => {
+                  await setBrightness(bright);
+                  await DeviceBrightness.setBrightnessLevel(Number(brightness));
+                }}
               />
             </View>
           }
@@ -177,7 +184,8 @@ export default function ReaderScreen({ navigation }) {
                     onPress={() => {
                       if (index === 2) {
                         navigation.navigate('StartAndBook')
-                      } else {
+                      }
+                      else {
                         getBooleanMenu(index)
                       }
                     }}>
@@ -196,6 +204,7 @@ export default function ReaderScreen({ navigation }) {
               trackStyle={{ height: 4 }}
               minimumTrackTintColor={'#48BF85'}
               maximumTrackTintColor={'#553241'}
+
               onValueChange={value => setRange(range)}
             />
           }
@@ -225,7 +234,6 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    // justifyContent: 'space-between'
   },
   team: {
     color: 'white',
@@ -258,27 +266,11 @@ const styles = StyleSheet.create({
     color: '#000000',
     textAlign: 'center',
   },
-  customStyleButton: {
-    width: 200,
-    height: 200,
-    zIndex: 1,
-    left: '50%',
-    top: '50%',
-    position: 'absolute',
-    transform: [
-      { translateX: -100 },
-      { translateY: -100 }
-    ],
-    // paddingHorizontal: 50
-    backgroundColor: 'rgba(255, 255, 255)',
-
-  },
   infoBar: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 10
-
   },
   thumbStyle: {
     width: 18,
