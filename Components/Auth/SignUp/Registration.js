@@ -1,15 +1,28 @@
 import React, { useState } from "react"
 import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, TextInput, } from "react-native"
+import { useDispatch, useSelector } from "react-redux"
 import Eye from "../../../assets/NavIcons/Eye"
 import GoBack from "../../../assets/NavIcons/GoBack"
 import MainButton from "../../../assets/NavIcons/MainButton"
-import { resetCode } from "../../redux/action/signUpAction"
+import { registration } from "../../redux/action/signUpAction"
 
 
 export default function Registration({ navigation }) {
 
+  const dispatch = useDispatch()
+
+  const registration_errors = useSelector(store => store.signUpReducer.register_validation)
+  const registration_success = useSelector(store => store.signUpReducer.register_success)
+
+
+
   const [eyePassword, setEyePassword] = useState(false)
   const [eyeConfirmPassword, setEyeConfirmPassword] = useState(false)
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [password_confirmation, setPassword_confirmation] = useState('')
 
 
   return (
@@ -29,26 +42,32 @@ export default function Registration({ navigation }) {
         </View>
 
         <TextInput
-          style={styles.inputs}
+          style={[styles.inputs, registration_errors.name_error ? { borderColor: 'red' } : { borderColor: '#AF9EA0' }]}
           placeholder="имя"
           placeholderTextColor={'#AF9EA0'}
+          value={name}
+          onChangeText={(e) => { setName(e) }}
         />
 
 
         <TextInput
-          style={styles.inputs}
+          style={[styles.inputs, registration_errors.email_error ? { borderColor: 'red' } : { borderColor: '#AF9EA0' }]}
           placeholder="эл.почта"
           placeholderTextColor={'#AF9EA0'}
           keyboardType="email-address"
+          value={email}
+          onChangeText={(e) => setEmail(e)}
         />
 
         <View style={{ position: 'relative' }}>
           <TextInput
-            style={styles.inputs}
+            style={[styles.inputs, registration_errors.password_error ? { borderColor: 'red' } : { borderColor: '#AF9EA0' }]}
             placeholder="новый пароль"
             placeholderTextColor={'#AF9EA0'}
             passwordRules={true}
             secureTextEntry={!eyePassword}
+            value={password}
+            onChangeText={(e) => setPassword(e)}
           />
           <TouchableOpacity
             style={styles.eye}
@@ -61,11 +80,13 @@ export default function Registration({ navigation }) {
 
         <View style={{ position: 'relative' }}>
           <TextInput
-            style={styles.inputs}
+            style={[styles.inputs, registration_errors.password_confirmation_error ? { borderColor: 'red' } : { borderColor: '#AF9EA0' }]}
             placeholder="повторите пароль"
             placeholderTextColor={'#AF9EA0'}
             passwordRules={true}
             secureTextEntry={!eyeConfirmPassword}
+            value={password_confirmation}
+            onChangeText={(e) => setPassword_confirmation(e)}
           />
           <TouchableOpacity
             style={styles.eye}
@@ -80,15 +101,21 @@ export default function Registration({ navigation }) {
 
         <TouchableOpacity
           style={styles.regButt}
-          onPress={() => {
-            // navigation.navigate('ConfirmRegister')
-            let formdata = new FormData();
-            formdata.append("name", "gag");
-            formdata.append("email", "lagasdalskd@gmail.com");
-            formdata.append("password", "11111111");
-            formdata.append("password_confirmation", "11111111");
+          onPress={async () => {
+            let raw = JSON.stringify({
+              "name": name,
+              "email": email,
+              "password": password,
+              "password_confirmation": password_confirmation
+            });
+            dispatch(registration(raw)).then(() => {
 
-            resetCode(formdata.name, formdata.email, formdata.password, formdata.password_confirmation)
+              if (registration_success.success === true) {
+                navigation.navigate('ConfirmRegister')
+              }
+
+            })
+
           }}>
           <MainButton text={'зарегистрироваться'} />
         </TouchableOpacity>
@@ -129,7 +156,6 @@ const styles = StyleSheet.create({
 
   inputs: {
     borderWidth: 1,
-    borderColor: '#AF9EA0',
     borderRadius: 10,
     height: 40,
     width: '100%',

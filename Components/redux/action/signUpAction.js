@@ -1,24 +1,51 @@
-const repeat = (payload) => {
+const register = (data) => {
   return {
-    type: 'repeat',
-    payload
+    type: 'register',
+    data
+  }
+}
+
+const confirm = (data) => {
+  return {
+    type: 'confirm',
+    data
   }
 }
 
 
-export const resetCode = (name, email, password, password_confirmation) => {
-  console.log(name);
+
+
+export const registration = (data) => {
   return async (dispatch) => {
-
-    let requestOptions = {
+    await fetch(`${process.env.APP_NAME}registration`, {
       method: 'POST',
-      body: formdata,
-      redirect: 'follow'
-    };
+      headers: { 'Content-Type': 'application/json' },
+      body: data,
+    })
+      .then((data) => data.json())
+      .then(res => {
+        dispatch(register(res))
+      })
+      .catch(err => {
+        console.log('ERROR --->>>', err.message)
+      })
+  }
+}
 
-    fetch("https://book.justcode.am/api/registration", requestOptions)
-      .then(response => response.json())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
+
+export const confirmRegister = (data) => {
+  return async (dispatch) => {
+    await fetch(`${process.env.APP_NAME}verify`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: data,
+    })
+      .then((data) => data.json())
+      .then(res => {
+        dispatch(confirm(res))
+      })
+      .catch(err => {
+        console.log('ERROR --->>>', err.message)
+      })
   }
 }

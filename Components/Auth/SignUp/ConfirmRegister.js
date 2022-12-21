@@ -1,10 +1,18 @@
-import React from "react"
+import React, { useState } from "react"
 import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, TextInput, } from "react-native"
+import { useDispatch, useSelector } from "react-redux"
 import GoBack from "../../../assets/NavIcons/GoBack"
 import MainButton from "../../../assets/NavIcons/MainButton"
+import { confirmRegister } from "../../redux/action/signUpAction"
 
 
 export default function ConfirmRegister({ navigation }) {
+
+  const [confirm, setConfirm] = useState()
+  const dispatch = useDispatch()
+  const verify_success = useSelector(store => store.signUpReducer.verify_success)
+
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -28,11 +36,13 @@ export default function ConfirmRegister({ navigation }) {
         </Text>
 
         <TextInput
-          style={styles.confirmInput}
+          style={[styles.confirmInput, verify_success === false ? { borderColor: 'red' } : { borderColor: '#AF9EA0' }]}
           placeholder="код подтверждения"
           placeholderTextColor={'#AF9EA0'}
           keyboardType="number-pad"
           maxLength={4}
+          value={confirm}
+          onChangeText={(e) => setConfirm(e)}
         />
 
 
@@ -40,7 +50,16 @@ export default function ConfirmRegister({ navigation }) {
         <TouchableOpacity
           style={styles.regButt}
           onPress={() => {
-            navigation.navigate('SuccessfulRegister')
+            let raw = JSON.stringify({
+              "verified_code": confirm,
+            });
+            dispatch(confirmRegister(raw)).then(() => {
+
+              if (verify_success.success === true) {
+                navigation.navigate('SuccessfulRegister')
+              }
+
+            })
           }}>
           <MainButton text={'подтвердить'} />
         </TouchableOpacity>
@@ -85,7 +104,6 @@ const styles = StyleSheet.create({
   },
   confirmInput: {
     borderWidth: 1,
-    borderColor: '#AF9EA0',
     borderRadius: 10,
     height: 40,
     width: '100%',
